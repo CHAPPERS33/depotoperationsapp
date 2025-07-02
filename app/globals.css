@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey track */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888; /* Darker grey thumb */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Even darker on hover */
+}
+
+body {
+  /* Standard Next.js might provide its own defaults, ensure this aligns or is removed if redundant */
+  /* color: rgb(var(--foreground-rgb)); */
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+/* Tailwind JIT safety for dynamic classes in NavLink (app/layout.tsx) */
+.border-blue-500 { border-color: #3b82f6; } .text-blue-500 { color: #3b82f6; }
+.border-green-500 { border-color: #22c55e; } .text-green-500 { color: #22c55e; }
+.border-indigo-500 { border-color: #6366f1; } .text-indigo-500 { color: #6366f1; }
+.border-purple-500 { border-color: #a855f7; } .text-purple-500 { color: #a855f7; }
+.border-yellow-500 { border-color: #eab308; } .text-yellow-500 { color: #eab308; }
+.border-orange-500 { border-color: #f97316; } .text-orange-500 { color: #f97316; }
