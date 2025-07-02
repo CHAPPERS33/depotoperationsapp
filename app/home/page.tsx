@@ -1,11 +1,11 @@
 // app/home/page.tsx
 'use client';
-import UpdatedLoginForm from '../../components/UpdatedLoginForm';
+import LoginForm from '../../components/LoginForm'; // ✅ Change this line
 
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <UpdatedLoginForm />
+      <LoginForm /> {/* ✅ Change this line too */}
     </div>
   );
 }
