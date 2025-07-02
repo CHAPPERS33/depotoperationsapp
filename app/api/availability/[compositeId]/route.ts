@@ -8,7 +8,7 @@ interface RouteParams {
   params: { compositeId: string }; // e.g., "TM001__2024-08-15"
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { compositeId } = params;
   try {
     const [teamMemberId, date] = compositeId.split('__');
