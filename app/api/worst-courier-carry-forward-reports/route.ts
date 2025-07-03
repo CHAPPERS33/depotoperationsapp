@@ -26,9 +26,9 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<WorstCourierCarryForwardReport, "id" | "submitted_at"> & { 
+    const body: const body: Omit<WorstCourierCarryForwardReport, "id" | "submitted_at"> & { 
   submitted_by_team_member_id: string;
-}
+} = await _request.json();
 
     if (
       !body.periodType ||
