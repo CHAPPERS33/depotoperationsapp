@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { Vehicle, VehicleType, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const vehicles = await query<Vehicle>('SELECT * FROM vehicles ORDER BY registration ASC');
     return NextResponse.json<ApiResponse<Vehicle[]>>({ data: vehicles, status: 200 });
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<Vehicle, 'createdAt' | 'updatedAt'> = await __request.json();
     

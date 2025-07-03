@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { HHTAsset, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const hhtAssets = await query<HHTAsset>('SELECT * FROM hht_assets ORDER BY serial_number ASC');
     return NextResponse.json<ApiResponse<HHTAsset[]>>({ data: hhtAssets, status: 200 });
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<HHTAsset, 'createdAt' | 'updatedAt'> = await __request.json();
     

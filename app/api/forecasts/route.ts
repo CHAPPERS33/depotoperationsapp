@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { Forecast, ForecastVolume, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const forecastsResult = await query<any>(`
       SELECT 
@@ -42,7 +42,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
     const body: Omit<Forecast, 'id' | 'createdAt' | 'updatedAt' | 'volumes' | 'pay_period_info'> & { volumes?: Omit<ForecastVolume, 'id' | 'forecast_id'>[] } = await __request.json();

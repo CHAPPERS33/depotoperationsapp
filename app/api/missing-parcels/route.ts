@@ -25,7 +25,7 @@ const buildSelectQuery = (whereClause: string = "", params: any[] = []) => {
 };
 
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const { searchParams } = new URL(_request.url);
     // Example filter parameters (can be extended)
@@ -64,7 +64,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const parcelDataInput: Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'> | Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'>[] = await __request.json();
     

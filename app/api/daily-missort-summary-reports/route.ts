@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { DailyMissortSummaryReport, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const reports = await query<any>(`
       SELECT 
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<DailyMissortSummaryReport, 'id' | 'submitted_at' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name_filter'> = await __request.json();
     

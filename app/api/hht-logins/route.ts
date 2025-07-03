@@ -10,7 +10,7 @@ async function hashPin(pin: string): Promise<string> {
   return `hashed_${pin.split('').reverse().join('')}`; 
 }
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const hhtLogins = await query<HHTLogin>('SELECT login_id, sub_depot_id, notes, is_active, created_at, updated_at FROM hht_logins ORDER BY login_id ASC');
     return NextResponse.json<ApiResponse<HHTLogin[]>>({ data: hhtLogins, status: 200 });
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<HHTLogin, 'pin_hash' | 'createdAt' | 'updatedAt'> & { pin: string } = await __request.json();
     

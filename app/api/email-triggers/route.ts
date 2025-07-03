@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { EmailTrigger, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const triggers = await query<EmailTrigger>('SELECT * FROM email_triggers ORDER BY name ASC');
     return NextResponse.json<ApiResponse<EmailTrigger[]>>({ data: triggers, status: 200 });
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<EmailTrigger, 'id' | 'createdAt' | 'updatedAt' | 'last_sent_at' | 'last_run_status' | 'last_error_message'> = await __request.json();
     

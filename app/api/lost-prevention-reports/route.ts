@@ -4,7 +4,7 @@ import type { LostPreventionReport, LostPreventionReportAttachment, ApiResponse 
 import { query, getClient } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const reports = await query<any>(`
       SELECT 
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
     const formData = await __request.formData();

@@ -4,7 +4,7 @@ import type { Invoice, InvoiceLine, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const { searchParams } = new URL(_request.url);
     const payPeriodId = searchParams.get('pay_period_id');
@@ -55,7 +55,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
     const formData = await __request.formData();

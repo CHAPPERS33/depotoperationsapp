@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import type { TeamMember, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db'; 
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const teamMembers = await query<TeamMember>('SELECT * FROM team_members ORDER BY name ASC');
     return NextResponse.json<ApiResponse<TeamMember[]>>({ data: teamMembers, status: 200 });
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Partial<Omit<TeamMember, 'id' | 'createdAt' | 'updatedAt'>> & { id?: string } = await __request.json();
     

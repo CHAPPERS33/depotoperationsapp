@@ -20,7 +20,7 @@ function convertDateToYYYYMMDD(dateStr: string): string | null {
 }
 
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const { searchParams } = new URL(_request.url);
     const dateParam = searchParams.get('date'); // Expected as DD/MM/YYYY from client (TODAY_DATE_STRING_GB)

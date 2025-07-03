@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { WorstCourierPerformanceReport, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const reports = await query<WorstCourierPerformanceReport>(
       'SELECT *, submitted_at AS generated_at, submitted_by_team_member_id AS generated_by FROM duc_worst_courier_performance_reports ORDER BY submitted_at DESC'
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<WorstCourierPerformanceReport, 'id' | 'submitted_at'> = await __request.json();
 

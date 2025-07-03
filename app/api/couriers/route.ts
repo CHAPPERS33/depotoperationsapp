@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { Courier, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const couriers = await query<Courier>(`
       SELECT c.*, tm.name as driver_team_member_name 
@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<Courier, 'createdAt' | 'updatedAt' | 'driver_team_member_name'> = await __request.json(); 
     

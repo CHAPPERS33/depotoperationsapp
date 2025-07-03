@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { TimeslotAssignment, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   const { searchParams } = new URL(_request.url);
   const date = searchParams.get('date');
   try {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<TimeslotAssignment, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
     

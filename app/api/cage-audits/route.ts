@@ -7,7 +7,7 @@ import { handleFileUpload } from '../../../lib/fileUpload'; // Adjusted path
 import path from 'path';
 
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     // Fetch cage audits and join with related tables
     const cageAuditsResult = await query<any>(`
@@ -59,7 +59,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient(); // Use dbClient for transactions
   try {
     const formData = await __request.formData();

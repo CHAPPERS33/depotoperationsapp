@@ -4,7 +4,7 @@ import type { ScanLog, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const scanLogs = await query<ScanLog>('SELECT * FROM scan_logs ORDER BY date DESC, scan_start_time DESC');
     return NextResponse.json<ApiResponse<ScanLog[]>>({ data: scanLogs, status: 200 });
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const formData = await __request.formData();
     const date = formData.get('date') as string;

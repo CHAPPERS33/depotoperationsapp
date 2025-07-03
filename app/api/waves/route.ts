@@ -4,7 +4,7 @@ import type { WaveEntry, VehicleType, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const waves = await query<WaveEntry>('SELECT * FROM waves ORDER BY date DESC, time DESC');
     return NextResponse.json<ApiResponse<WaveEntry[]>>({ data: waves, status: 200 });
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const formData = await __request.formData();
     const van_reg = formData.get('van_reg') as string;

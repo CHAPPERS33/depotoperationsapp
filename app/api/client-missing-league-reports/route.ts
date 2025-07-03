@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { ClientMissingLeagueReport, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const reports = await query<ClientMissingLeagueReport>(
       `SELECT *, submitted_at AS generated_at, submitted_by_team_member_id AS generated_by 
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<ClientMissingLeagueReport, 'id' | 'submitted_at'> = await __request.json();
 

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { PayPeriod, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const payPeriods = await query<PayPeriod>('SELECT * FROM pay_periods ORDER BY year DESC, period_number DESC');
     return NextResponse.json<ApiResponse<PayPeriod[]>>({ data: payPeriods, status: 200 });
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<PayPeriod, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
     

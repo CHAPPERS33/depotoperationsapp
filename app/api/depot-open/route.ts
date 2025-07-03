@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { DepotOpenRecord, ApiResponse, DepotOpenApiResponseItem } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const { searchParams } = new URL(_request.url);
     const date = searchParams.get('date');
@@ -29,7 +29,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
     const body: Omit<DepotOpenRecord, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();

@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import type { CageReturnReport, NonReturnedCageDetail, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const reports = await query<any>(`
       SELECT 
@@ -40,7 +40,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
     const body: Omit<CageReturnReport, 'id' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name'> = await __request.json();

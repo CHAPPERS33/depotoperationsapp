@@ -31,7 +31,7 @@ async function getTableCounts(): Promise<DatabaseStatusCounts> {
   return counts;
 }
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const counts = await getTableCounts();
     return NextResponse.json<ApiResponse<DatabaseStatusCounts>>({ data: counts, status: 200 });
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     // Actual database seeding is a destructive operation and should be handled with extreme care,
     // typically via CLI scripts or migration tools, not an open API endpoint in production.

@@ -6,7 +6,7 @@ const lastRequestTimes = new Map<string, number>();
 
 const RATE_LIMIT_MS = 5000; // 5 seconds per barcode
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   const { searchParams } = new URL(_request.url);
   const barcode = searchParams.get('barcode');
   

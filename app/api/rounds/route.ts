@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { Round, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const rounds = await query<Round>('SELECT * FROM rounds ORDER BY id ASC');
     return NextResponse.json<ApiResponse<Round[]>>({ data: rounds, status: 200 });
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
   try {
     const body: Omit<Round, 'createdAt' | 'updatedAt'> = await __request.json();
     
