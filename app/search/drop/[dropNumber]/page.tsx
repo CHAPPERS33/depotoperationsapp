@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation'; // Changed from useHashRouter
 import { useSharedState } from '../../../../hooks/useSharedState';
 import { getDropProfileDetails } from '../../../../utils/searchUtils';
-import { DropProfileData, ParcelScanEntry, RoundEntry } from '../../../../types'; 
-import { TrendingUp, AlertTriangle, CheckCircle2, ExternalLink } from 'lucide-react';
+import { DropProfileData, RoundEntry } from '../../../../types'; 
+import { TrendingUp, AlertTriangle, ExternalLink } from 'lucide-react';
 import Button from '../../../../components/shared/Button';
 
 export default function DropProfileDisplayPage() {
