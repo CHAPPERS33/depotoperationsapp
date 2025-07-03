@@ -1,7 +1,7 @@
 // app/api/scan-logs/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { ScanLog, ApiResponse } from '../../../../types';
-import { query  } from '../../../../lib/db';
+import { query, getClient } from '../../../../lib/db';
  
 import _path from 'path';
 
