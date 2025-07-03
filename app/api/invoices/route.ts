@@ -1,7 +1,7 @@
 // app/api/invoices/route.ts
 import { NextResponse } from 'next/server';
 import type { Invoice, InvoiceLine, ApiResponse } from '../../../types';
-import { query  } from '../../../lib/db';
+import { query, getClient } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload';
 
 export async function GET(_request: Request) {
