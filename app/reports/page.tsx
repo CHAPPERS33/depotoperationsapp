@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FileText, BarChart2, PieChart, LucideIcon, ArchiveX, ShieldAlert, MailWarning, CalendarRange, UserX, CornerUpLeft, ListChecks, PackageX, Shuffle } from 'lucide-react';
+import { FileText, LucideIcon, ArchiveX, ShieldAlert, MailWarning, CalendarRange, UserX, CornerUpLeft, ListChecks, PackageX, Shuffle } from 'lucide-react';
 import AppLink from '../../components/shared/AppLink';
 import ProtectedRoute from '../../components/ProtectedRoute';
 import { useAuth } from '../../contexts/AuthContext';
