@@ -51,7 +51,12 @@ export default function DashboardPage() {
     availableMetrics.filter(m => m.defaultChecked).map(m => m.id)
   );
   const [showMetricSelector, setShowMetricSelector] = useState(false);
-
+ 
+  useEffect(() => {
+    // Initialize data on component mount if needed
+    handleRefreshData();
+  }, []);
+  
   const handleRefreshData = async () => {
     setRefreshing(true);
     await Promise.all([
