@@ -1,6 +1,6 @@
 // app/api/vehicles/route.ts
 import { NextResponse } from 'next/server';
-import type { Vehicle, VehicleType, ApiResponse } from '../../../types';
+import type { Vehicle, ApiResponse } from '../../../types';
 import { query } from '../../../lib/db';
 
 export async function GET(_request: Request) {
