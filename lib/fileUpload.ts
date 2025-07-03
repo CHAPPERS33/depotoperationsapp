@@ -1,6 +1,6 @@
 // lib/fileUpload.ts
 import fs from 'fs/promises';
-import path from 'path';
+import _path from 'path';
 import { Buffer } from 'buffer';
 
 const CWD = (typeof process !== 'undefined' && typeof (process as any).cwd === 'function') ? (process as any).cwd() : '.'; 

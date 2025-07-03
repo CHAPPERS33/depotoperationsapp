@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import type { ScanLog, ApiResponse } from '../../../../types';
 import { query, getClient } from '../../../../lib/db';
 import { handleFileUpload, deleteUploadedFileByRelativePath } from '../../../../lib/fileUpload';
-import path from 'path';
+import _path from 'path';
 
 interface RouteParams {
   params: { id: string }; // ID is UUID TEXT
