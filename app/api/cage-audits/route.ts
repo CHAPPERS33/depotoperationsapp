@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import type { CageAuditEntry, MissortedParcelDetail, CageAuditImage, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 import { handleFileUpload } from '../../../lib/fileUpload'; // Adjusted path
-import path from 'path';
+import _path from 'path';
 
 
 export async function GET(_request: Request) {

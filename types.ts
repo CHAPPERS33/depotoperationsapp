@@ -663,7 +663,21 @@ export type PeriodSelection = 'day' | 'week' | 'month' | 'custom'; // Added cust
 // Their structure is for the report output.
 export interface WorstCourierPerformanceReport { id: string; periodType: PeriodSelection; startDate: string; endDate: string; couriers: Array<{ courierId: string; courierName?: string; score: number; metrics: { totalMissing: number; unrecovered: number; carryForwards: number; }; reasons?: string[]; }>; generatedAt: string; generatedBy: string; }
 export interface WorstRoundPerformanceReport { id: string; periodType: PeriodSelection; startDate: string; endDate: string; rounds: Array<{ roundId: string; subDepotId: number; subDepotName?: string; score: number; metrics: { totalMissing: number; }; reasons?: string[]; }>; generatedAt: string; generatedBy: string; }
-export interface ClientMissingLeagueReport { id: string; periodType: PeriodSelection; startDate: string; endDate: string; clients: Array<{ clientId: number; clientName?: string; totalMissing: number; rank: number; }>; generatedAt: string; generatedBy: string; }
+export interface ClientMissingLeagueReport {
+  id: string;
+  periodType: PeriodSelection;
+  startDate: string;
+  endDate: string;
+  clients: Array<{
+    clientId: number;
+    clientName?: string;
+    totalMissing: number;
+    rank: number;
+  }>;
+  generatedAt: string;
+  generatedBy: string;
+  submitted_by_team_member_id: string;  // Add this line
+  submitted_by_name?: string;           // Add this line (optional)
 export interface TopMisroutedDestinationsReport { id: string; periodType: PeriodSelection; startDate: string; endDate: string; destinations: Array<{ destinationDUId: string; destinationDUName?: string; count: number; }>; generatedAt: string; generatedBy: string; }
 export interface WorstCourierCarryForwardReport { id: string; periodType: PeriodSelection; startDate: string; endDate: string; couriers: Array<{ courierId: string; courierName?: string; totalCarryForwards: number; }>; generatedAt: string; generatedBy: string; }
 
