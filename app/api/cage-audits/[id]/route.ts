@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 import type { CageAuditEntry, MissortedParcelDetail, CageAuditImage, ApiResponse } from '../../../../types';
 import { query, getClient } from '../../../../lib/db';
- 
+import { deleteUploadedFileByRelativePath } from '../../../../lib/fileUpload';
 
 interface RouteParams {
   params: { id: string }; // ID is UUID TEXT
