@@ -2,7 +2,8 @@
 import { NextResponse } from 'next/server';
 import type { ScanLog, ApiResponse } from '../../../../types';
 import { query, getClient } from '../../../../lib/db';
- 
+import { deleteUploadedFileByRelativePath, handleFileUpload } from '../../../../lib/fileUtils';
+
 import _path from 'path';
 
 interface RouteParams {
