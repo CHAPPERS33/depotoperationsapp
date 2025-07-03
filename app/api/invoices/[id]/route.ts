@@ -2,7 +2,7 @@
 // app/api/invoices/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { Invoice, InvoiceLine, ApiResponse } from '../../../../types';
-import { query  } from '../../../../lib/db';
+import { query, getClient } from '../../../../lib/db';
  
 
 interface RouteParams {
