@@ -16,7 +16,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     const date = formData.get('date') as string;
     const user_id_team_member = formData.get('user_id_team_member') as string;
     const sub_depot_id_str = formData.get('sub_depot_id') as string;

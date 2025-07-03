@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<Round, 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<Round, 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.id || body.sub_depot_id === undefined || body.drop_number === undefined) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Round ID, Sub Depot ID, and Drop Number are required', status: 400});

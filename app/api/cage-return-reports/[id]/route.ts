@@ -74,7 +74,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const body: Omit<CageReturnReport, 'id' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name'> = await __request.json();
+    const body: Omit<CageReturnReport, 'id' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name'> = await _request.json();
 
     if (!body.date || !body.sub_depot_id || !body.submitted_by_team_member_id) {
       return NextResponse.json<ApiResponse>({ error: 'Missing required fields for update.', status: 400 });

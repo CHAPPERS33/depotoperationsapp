@@ -46,7 +46,7 @@ export async function GET(_request: Request) {
 export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     
     const date = formData.get('date') as string;
     const submittedByTeamMemberId = formData.get('submitted_by_team_member_id') as string;

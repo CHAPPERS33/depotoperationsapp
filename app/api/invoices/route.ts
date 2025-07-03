@@ -58,7 +58,7 @@ export async function GET(_request: Request) {
 export async function POST(_request: Request) {
   const dbClient = await getClient();
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     
     // Extract main invoice fields from FormData
     const pay_period_id = formData.get('pay_period_id') as string;

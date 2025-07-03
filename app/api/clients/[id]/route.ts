@@ -30,7 +30,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
     return NextResponse.json<ApiResponse<null>>({ error: 'Invalid Client ID format', status: 400 });
   }
   try {
-    const body: Partial<Omit<Client, 'id' | 'createdAt' | 'updatedAt'>> = await __request.json();
+    const body: Partial<Omit<Client, 'id' | 'createdAt' | 'updatedAt'>> = await _request.json();
 
     if (Object.keys(body).length === 0) {
         return NextResponse.json<ApiResponse<null>>({ error: 'No fields provided for update', status: 400});

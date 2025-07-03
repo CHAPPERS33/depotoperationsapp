@@ -74,7 +74,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const body: Partial<Omit<Forecast, 'id' | 'createdAt' | 'updatedAt' | 'pay_period_info'>> & { volumes?: Array<Omit<ForecastVolume, 'id' | 'forecast_id' | 'sub_depot_name'>> } = await __request.json();
+    const body: Partial<Omit<Forecast, 'id' | 'createdAt' | 'updatedAt' | 'pay_period_info'>> & { volumes?: Array<Omit<ForecastVolume, 'id' | 'forecast_id' | 'sub_depot_name'>> } = await _request.json();
     
     await dbClient.query('BEGIN');
     const forecastUpdateResult = await dbClient.query<Forecast>(

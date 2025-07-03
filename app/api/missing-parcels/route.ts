@@ -66,7 +66,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const parcelDataInput: Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'> | Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'>[] = await __request.json();
+    const parcelDataInput: Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'> | Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'>[] = await _request.json();
     
     const processParcel = async (p: Omit<ParcelScanEntry, 'id' | 'created_at' | 'updated_at'>): Promise<ParcelScanEntry> => {
       const result = await query<ParcelScanEntry>(

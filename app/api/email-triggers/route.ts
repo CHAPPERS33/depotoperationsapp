@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<EmailTrigger, 'id' | 'createdAt' | 'updatedAt' | 'last_sent_at' | 'last_run_status' | 'last_error_message'> = await __request.json();
+    const body: Omit<EmailTrigger, 'id' | 'createdAt' | 'updatedAt' | 'last_sent_at' | 'last_run_status' | 'last_error_message'> = await _request.json();
     
     if (!body.name || !body.report_type || !body.frequency || !body.send_time || !body.recipients || body.recipients.length === 0) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Name, Report Type, Frequency, Send Time, and Recipients are required', status: 400});

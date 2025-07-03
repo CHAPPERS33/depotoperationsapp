@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<SubDepot, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<SubDepot, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.name || !body.delivery_unit_id) { // ID is SERIAL, so not provided by client for new
         return NextResponse.json<ApiResponse<null>>({ error: 'Sub Depot Name and Delivery Unit ID are required', status: 400});

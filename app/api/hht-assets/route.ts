@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<HHTAsset, 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<HHTAsset, 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.serial_number || !body.status) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Serial Number and Status are required', status: 400});

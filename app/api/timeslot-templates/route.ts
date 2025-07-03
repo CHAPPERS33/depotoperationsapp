@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<TimeslotTemplate, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<TimeslotTemplate, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.name || !body.slots || body.slots.length === 0 || body.max_capacity_per_slot === undefined) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Name, Slots array, and Max Capacity are required', status: 400});

@@ -29,7 +29,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<TopMisroutedDestinationsReport, 'id'> = await __request.json();
+    const body: Omit<TopMisroutedDestinationsReport, 'id'> = await _request.json();
     
     if (!body.startDate || !body.endDate || !body.destinations || !body.generatedBy) {
       return NextResponse.json<ApiResponse>({ error: 'Missing required fields for report.', status: 400 });

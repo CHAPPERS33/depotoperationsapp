@@ -27,7 +27,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     
     const updateFields: string[] = [];
     const updateValues: any[] = [];

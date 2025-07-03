@@ -24,7 +24,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<TimeslotAssignment, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<TimeslotAssignment, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.round_id || !body.sub_depot_id || !body.date || !body.timeslot) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Round ID, Sub Depot ID, Date, and Timeslot are required', status: 400});

@@ -15,7 +15,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<PayPeriod, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<PayPeriod, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.period_number || !body.year || !body.start_date || !body.end_date || !body.status) {
         return NextResponse.json<ApiResponse>({ error: 'Missing required fields for pay period', status: 400});

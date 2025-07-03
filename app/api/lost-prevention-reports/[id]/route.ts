@@ -51,7 +51,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     const existingReport = await dbClient.query<LostPreventionReport>('SELECT * FROM duc_lost_prevention_reports WHERE id = $1', [id]);
     if (existingReport.rows.length === 0) {
         await dbClient.query('ROLLBACK');

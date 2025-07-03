@@ -43,7 +43,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<AvailabilityRecord, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<AvailabilityRecord, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.team_member_id || !body.date || !body.status) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Team Member ID, Date, and Status are required', status: 400});

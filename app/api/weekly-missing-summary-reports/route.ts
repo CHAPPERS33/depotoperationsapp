@@ -28,7 +28,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<WeeklyMissingSummaryReport, 'id' | 'submitted_at' | 'createdAt' | 'updatedAt' | 'generated_by_name'> = await __request.json();
+    const body: Omit<WeeklyMissingSummaryReport, 'id' | 'submitted_at' | 'createdAt' | 'updatedAt' | 'generated_by_name'> = await _request.json();
 
     if (
       !body.week_start_date ||

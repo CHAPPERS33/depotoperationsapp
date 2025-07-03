@@ -32,7 +32,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const body: Omit<WorkSchedule, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
+    const body: Omit<WorkSchedule, 'id' | 'createdAt' | 'updatedAt'> = await _request.json();
     
     if (!body.date || !body.team_member_id || !body.sub_depot_id || body.scheduled_hours === undefined) {
         return NextResponse.json<ApiResponse>({ error: 'Missing required fields for work schedule', status: 400});

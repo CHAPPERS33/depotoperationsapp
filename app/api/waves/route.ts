@@ -16,7 +16,7 @@ export async function GET(_request: Request) {
 
 export async function POST(_request: Request) {
   try {
-    const formData = await __request.formData();
+    const formData = await _request.formData();
     const van_reg = formData.get('van_reg') as string;
     const vehicle_type = formData.get('vehicle_type') as VehicleType;
     const date = formData.get('date') as string;
