@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'; // Use Next.js routing
 import { useSharedState } from '../../../../hooks/useSharedState';
 import { getCourierProfileDetails } from '../../../../utils/searchUtils';
 import { CourierProfileData, ParcelScanEntry } from '../../../../types'; 
-import { User as UserIcon, TrendingUp, AlertTriangle, Plus, CheckCircle2, Clock, Phone, ExternalLink } from 'lucide-react';
+import { User as UserIcon, AlertTriangle, Plus, CheckCircle2, Clock, Phone, ExternalLink } from 'lucide-react';
 import Button from '../../../../components/shared/Button';
 
 
