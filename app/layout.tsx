@@ -8,7 +8,7 @@ import { SharedStateProvider, useSharedState } from '../hooks/useSharedState';
 import { AuthProvider } from '../contexts/AuthContext'; // ADD THIS IMPORT
 import { usePathname, useRouter } from 'next/navigation';
 import AppLink from '../components/shared/AppLink';
-import './globals.css';
+import '../globals.css';
 
 // Page components are no longer directly imported or rendered here.
 // Next.js App Router handles page rendering based on file structure.
