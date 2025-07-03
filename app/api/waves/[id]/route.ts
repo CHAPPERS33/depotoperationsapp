@@ -1,7 +1,7 @@
 // app/api/waves/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { WaveEntry, VehicleType, ApiResponse } from '../../../../types';
-import { query  } from '../../../../lib/db';
+import { query, getClient } from '../../../../lib/db';
  
 import _path from 'path';
 
