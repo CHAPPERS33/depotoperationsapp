@@ -3,7 +3,7 @@
 import React from 'react';
 import SearchHub from '../../components/search/SearchHub';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '../../contexts/AuthContext';
+
 
 // Define user roles for access control
 type UserRole = 'manager' | 'sorter' | 'cdm' | 'guest' | 'duc'; 
