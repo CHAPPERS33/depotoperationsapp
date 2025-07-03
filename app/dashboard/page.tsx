@@ -6,6 +6,7 @@ import { useSharedState } from '../../hooks/useSharedState';
 import { useAuth } from '../../contexts/AuthContext'; // ADD THIS IMPORT
 import { getReportStatusForDate, getCourierStats } from '../../utils/reportUtils';
 import TodaysTimeslotsSection from '../../components/dashboard/TodaysTimeslotsSection';
+import DashboardMetricCard from '../../components/dashboard/DashboardMetricCard'; // ADD THIS LINE
 import { DashboardMetric } from '../../types';
 import { TODAY_DATE_STRING } from '../../constants';
 import { useRouter } from 'next/navigation';
