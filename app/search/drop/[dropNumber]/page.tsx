@@ -23,18 +23,13 @@ export default function DropProfileDisplayPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const pathParts = pathname.split('/');
-    if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'drop') {
-      const num = parseInt(pathParts[3]);
-      if (!isNaN(num)) {
-        setDropNumber(num);
-      } else {
-        setDropNumber(null);
-      }
-    } else {
-      setDropNumber(null);
-    }
-  }, [pathname]);
+  if (!pathname) return; // Add this null check
+  
+  const pathParts = pathname.split('/');
+  if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'drop') {
+    // ... rest of the code
+  }
+}, [pathname]);
 
   useEffect(() => {
     if (dropNumber !== null) {
