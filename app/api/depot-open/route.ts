@@ -2,6 +2,10 @@
 import { NextResponse } from 'next/server';
 import type { DepotOpenRecord, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
+<<<<<<< HEAD
+=======
+{ query, getClient } from '../../../lib/db'
+>>>>>>> origin/main
 
 export async function GET(_request: Request) {
   try {
