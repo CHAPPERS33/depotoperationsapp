@@ -26,25 +26,28 @@ export default function CourierProfileDisplayPage() {
     setCurrentCourierForWorkflow, setActiveTab, setDailyOpsView
   } = useSharedState();
   
-  useEffect(() => {
-  if (!currentPathname) return; // Add this null check
+ useEffect(() => {
+  if (!currentPathname) return;
   
   const pathParts = currentPathname.split('/');
   if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'courier') {
     setCourierId(pathParts[3]);
   } else {
+    setCourierId(null); // Add this line to handle else case
+  }
+}, [currentPathname]); // Add this closing brace and dependency array
 
-  useEffect(() => {
-    if (courierId) {
-      setIsLoading(true);
-      const details = getCourierProfileDetails(courierId, couriers, missingParcelsLog, rounds, subDepots, team, timeslotAssignments, timeslotTemplates);
-      setProfileData(details);
-      setIsLoading(false);
-    } else {
-      setProfileData(null);
-      setIsLoading(false);
-    }
-  }, [courierId, couriers, missingParcelsLog, rounds, subDepots, team, timeslotAssignments, timeslotTemplates]);
+useEffect(() => {
+  if (courierId) {
+    setIsLoading(true);
+    const details = getCourierProfileDetails(courierId, couriers, missingParcelsLog, rounds, subDepots, team, timeslotAssignments, timeslotTemplates);
+    setProfileData(details);
+    setIsLoading(false);
+  } else {
+    setProfileData(null);
+    setIsLoading(false);
+  }
+}, [courierId, couriers, missingParcelsLog, rounds, subDepots, team, timeslotAssignments, timeslotTemplates]);
 
   const handleBulkMarkRecovered = () => {
     if (!profileData || !courierId || profileData.stats.unrecovered === 0) {
