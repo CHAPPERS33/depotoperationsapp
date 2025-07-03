@@ -11,7 +11,7 @@ import Button from '../../../../components/shared/Button';
 
 export default function DropProfileDisplayPage() {
   const pathname = usePathname(); // Changed from useHashRouter
-  const [dropNumber, setDropNumber] = useState<number | null>(null);
+  const [dropNumber] = useState<number | null>(null);
 
   const { 
     rounds, missingParcelsLog, subDepots, couriers, team, 
