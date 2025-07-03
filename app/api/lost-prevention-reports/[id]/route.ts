@@ -123,7 +123,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
     await dbClient.query('COMMIT');
     
     // Re-fetch the updated report with all details
-    const updatedReportResult = await GET(request, { params });
+    const updatedReportResult = await GET(_request, { params });
     return updatedReportResult;
 
 
