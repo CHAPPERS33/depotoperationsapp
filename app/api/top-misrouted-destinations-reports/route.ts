@@ -60,7 +60,7 @@ export async function POST(_request: Request) {
         body.endDate, 
         JSON.stringify(body.destinations), 
         body.generatedBy,
-        body.notes || null
+        
       ]
     );
     
