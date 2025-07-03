@@ -27,7 +27,7 @@ const availableMetrics: Array<{ id: string; title: string; defaultChecked?: bool
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { hasRole, isManager, isSorter, isCDM, isGuest, isDUC, profile } = useAuth();
+  const { hasRole, isManager, isSorter, isCDM, isGuest, isDUC, } = useAuth();
   const {
     missingParcelsLog,
     scanActivityData,
