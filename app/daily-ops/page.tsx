@@ -4,7 +4,6 @@ import React from 'react';
 import { Package, Clock, Truck, ClipboardList, TrendingUp, CalendarClock, ReceiptText, Share2, LucideIcon, CalendarCheck2, Archive } from 'lucide-react';
 import AppLink from '../../components/shared/AppLink';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '../../contexts/AuthContext';
 
 // Define user roles for access control
 type UserRole = 'manager' | 'sorter' | 'cdm' | 'guest' | 'duc'; 
