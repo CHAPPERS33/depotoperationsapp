@@ -45,7 +45,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const dbClient = await getClient();
   try {
-    const body: Omit<Forecast, 'id' | 'createdAt' | 'updatedAt' | 'volumes' | 'pay_period_info'> & { volumes?: Omit<ForecastVolume, 'id' | 'forecast_id'>[] } = await request.json();
+    const body: Omit<Forecast, 'id' | 'createdAt' | 'updatedAt' | 'volumes' | 'pay_period_info'> & { volumes?: Omit<ForecastVolume, 'id' | 'forecast_id'>[] } = await __request.json();
     
     if (!body.forecast_for_date) {
         return NextResponse.json<ApiResponse>({ error: 'Forecast date is required', status: 400});

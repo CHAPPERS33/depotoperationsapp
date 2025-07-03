@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<HHTLogin, 'pin_hash' | 'createdAt' | 'updatedAt'> & { pin: string } = await request.json();
+    const body: Omit<HHTLogin, 'pin_hash' | 'createdAt' | 'updatedAt'> & { pin: string } = await __request.json();
     
     if (!body.login_id || !body.pin || body.sub_depot_id === undefined) {
       return NextResponse.json<ApiResponse>({ error: 'Login ID, PIN, and Sub Depot ID are required', status: 400 });

@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<DeliveryUnit, 'createdAt' | 'updatedAt'> = await request.json();
+    const body: Omit<DeliveryUnit, 'createdAt' | 'updatedAt'> = await __request.json();
     
     if (!body.id || !body.name) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Delivery Unit ID and Name are required', status: 400});

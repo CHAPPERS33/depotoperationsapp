@@ -32,7 +32,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const dbClient = await getClient();
   try {
-    const body: Omit<DepotOpenRecord, 'id' | 'createdAt' | 'updatedAt'> = await request.json();
+    const body: Omit<DepotOpenRecord, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
     
     if (!body.date || !body.time) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Date and Time are required', status: 400});

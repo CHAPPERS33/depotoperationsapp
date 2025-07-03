@@ -43,7 +43,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const dbClient = await getClient();
   try {
-    const body: Omit<CageReturnReport, 'id' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name'> = await request.json();
+    const body: Omit<CageReturnReport, 'id' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name'> = await __request.json();
     
     if (!body.date || !body.sub_depot_id || !body.submitted_by_team_member_id) {
       return NextResponse.json<ApiResponse>({ error: 'Missing required fields for cage return report.', status: 400 });

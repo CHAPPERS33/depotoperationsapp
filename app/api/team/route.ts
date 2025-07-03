@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Partial<Omit<TeamMember, 'id' | 'createdAt' | 'updatedAt'>> & { id?: string } = await request.json();
+    const body: Partial<Omit<TeamMember, 'id' | 'createdAt' | 'updatedAt'>> & { id?: string } = await __request.json();
     
     if (!body.name || !body.position) {
         return NextResponse.json<ApiResponse>({ error: 'Name and position are required', status: 400});

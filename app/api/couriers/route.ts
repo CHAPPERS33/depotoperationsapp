@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<Courier, 'createdAt' | 'updatedAt' | 'driver_team_member_name'> = await request.json(); 
+    const body: Omit<Courier, 'createdAt' | 'updatedAt' | 'driver_team_member_name'> = await __request.json(); 
     
     if (!body.id || !body.name) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Courier ID and Name are required', status: 400});

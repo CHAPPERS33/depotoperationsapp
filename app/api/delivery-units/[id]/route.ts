@@ -24,7 +24,7 @@ export async function GET(_request: Request, { params }: RouteParams) {
 export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
-    const body: Partial<Omit<DeliveryUnit, 'id' | 'createdAt' | 'updatedAt'>> = await request.json();
+    const body: Partial<Omit<DeliveryUnit, 'id' | 'createdAt' | 'updatedAt'>> = await __request.json();
 
     if (Object.keys(body).length === 0) {
         return NextResponse.json<ApiResponse<null>>({ error: 'No fields provided for update', status: 400});

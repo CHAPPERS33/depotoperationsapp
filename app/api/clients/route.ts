@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<Client, 'id' | 'createdAt' | 'updatedAt'> = await request.json();
+    const body: Omit<Client, 'id' | 'createdAt' | 'updatedAt'> = await __request.json();
     
     if (!body.name) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Client Name is required', status: 400});

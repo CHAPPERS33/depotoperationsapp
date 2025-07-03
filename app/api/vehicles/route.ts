@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<Vehicle, 'createdAt' | 'updatedAt'> = await request.json();
+    const body: Omit<Vehicle, 'createdAt' | 'updatedAt'> = await __request.json();
     
     if (!body.id || !body.registration || !body.type) {
         return NextResponse.json<ApiResponse<null>>({ error: 'Vehicle ID, Registration, and Type are required', status: 400});

@@ -24,7 +24,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const body: Omit<DailyMissortSummaryReport, 'id' | 'submitted_at' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name_filter'> = await request.json();
+    const body: Omit<DailyMissortSummaryReport, 'id' | 'submitted_at' | 'createdAt' | 'updatedAt' | 'submitted_by_name' | 'sub_depot_name_filter'> = await __request.json();
     
     if (!body.date || !body.submitted_by_team_member_id || body.total_missorts === undefined || !body.missorts_by_client || !body.missorts_by_round) {
       return NextResponse.json<ApiResponse<null>>({ error: 'Missing required fields for daily missort summary report.', status: 400 });
