@@ -2,7 +2,7 @@
 // app/api/cage-return-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { CageReturnReport, NonReturnedCageDetail, ApiResponse } from '../../../../types';
-import { query  } from '../../../../lib/db';
+import { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };
