@@ -2,7 +2,7 @@
 // app/api/cage-audits/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { CageAuditEntry, MissortedParcelDetail, CageAuditImage, ApiResponse } from '../../../../types';
-import { query  } from '../../../../lib/db';
+import { query, getClient } from '../../../../lib/db';
 import { handleFileUpload, deleteUploadedFileByRelativePath } from '../../../../lib/fileUpload';
 
 interface RouteParams {
