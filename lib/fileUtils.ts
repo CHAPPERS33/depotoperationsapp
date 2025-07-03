@@ -17,7 +17,13 @@ export async function handleFileUpload(
   file: File, 
   folder: string, 
   identifier: string
-): Promise<{ publicUrl: string }> {
+): Promise<{ 
+  publicUrl: string;
+  fileName: string;
+  filePath: string;
+  mimeType: string;
+  size: number;
+}> {
   if (!file) {
     throw new Error('No file provided');
   }
@@ -49,7 +55,13 @@ export async function handleFileUpload(
   const buffer = Buffer.from(arrayBuffer);
   await fs.writeFile(filePath, buffer);
   
-  // Return public URL
+  // Return all required properties
   const publicUrl = `/uploads/${folder}/${filename}`;
-  return { publicUrl };
+  return { 
+    publicUrl,
+    fileName: filename,
+    filePath: filePath,
+    mimeType: file.type,
+    size: file.size
+  };
 }
