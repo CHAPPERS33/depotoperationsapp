@@ -7,7 +7,7 @@ interface RouteParams {
   params: { serial_number: string };
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { serial_number } = params;
   try {
     const result = await query<HHTAsset>('SELECT * FROM hht_assets WHERE serial_number = $1', [serial_number]);
@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { serial_number } = params;
   try {
     const body: Partial<Omit<HHTAsset, 'serial_number' | 'createdAt' | 'updatedAt'>> = await request.json();
@@ -66,7 +66,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { serial_number } = params;
   try {
     // Check for dependencies (e.g., scan_logs)

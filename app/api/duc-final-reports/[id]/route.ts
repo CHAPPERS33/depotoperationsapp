@@ -26,7 +26,7 @@ interface DUCFinalReportRawDBRow extends Omit<DUCFinalReport, 'failed_rounds' | 
 }
 
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const reportResult = await query<DUCFinalReportRawDBRow>(`
@@ -90,7 +90,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   // This route is not fully implemented based on the prompt.
   // Placeholder to make the file valid.
   const { id } = params;

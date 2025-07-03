@@ -16,7 +16,7 @@ interface WeeklyMissingSummaryReportRawDBRow extends Omit<WeeklyMissingSummaryRe
 }
 
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query<WeeklyMissingSummaryReportRawDBRow>(`
@@ -44,7 +44,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const body: Partial<Omit<WeeklyMissingSummaryReport, 'id' | 'generated_at' | 'createdAt' | 'updatedAt'>> = await request.json();
@@ -103,7 +103,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query('DELETE FROM duc_weekly_missing_summary_reports WHERE id = $1 RETURNING id', [id]);

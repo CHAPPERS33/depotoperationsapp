@@ -7,7 +7,7 @@ interface RouteParams {
   params: { id: string };
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query<WorstCourierCarryForwardReport>('SELECT * FROM duc_worst_courier_carry_forward_reports WHERE id = $1', [id]);
@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query('DELETE FROM duc_worst_courier_carry_forward_reports WHERE id = $1 RETURNING id', [id]);

@@ -7,7 +7,7 @@ interface RouteParams {
   params: { id: string };
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query<EmailTrigger>('SELECT * FROM email_triggers WHERE id = $1', [id]);
@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const body: Partial<Omit<EmailTrigger, 'id' | 'createdAt' | 'updatedAt'>> = await request.json();
@@ -70,7 +70,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query('DELETE FROM email_triggers WHERE id = $1 RETURNING id', [id]);

@@ -9,7 +9,7 @@ interface RouteParams {
   params: { id: string }; // ID is UUID TEXT
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query<ScanLog>('SELECT * FROM scan_logs WHERE id = $1', [id]);
@@ -23,7 +23,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
@@ -120,7 +120,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {

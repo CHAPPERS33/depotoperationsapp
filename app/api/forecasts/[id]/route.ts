@@ -17,7 +17,7 @@ interface ForecastRawDBRow extends Omit<Forecast, 'volumes' | 'total_volume' | '
 }
 
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const forecastResult = await query<ForecastRawDBRow>(`
@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
@@ -144,7 +144,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {

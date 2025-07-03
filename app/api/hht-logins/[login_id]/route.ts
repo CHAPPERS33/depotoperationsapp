@@ -13,7 +13,7 @@ async function hashPin(pin: string): Promise<string> {
   return `hashed_${pin.split('').reverse().join('')}`; 
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { login_id } = params;
   try {
     const result = await query<HHTLogin>('SELECT login_id, sub_depot_id, notes, is_active, created_at, updated_at FROM hht_logins WHERE login_id = $1', [login_id]);
@@ -27,7 +27,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { login_id } = params;
   try {
     const body: Partial<Omit<HHTLogin, 'login_id' | 'pin_hash' | 'createdAt' | 'updatedAt'>> & { pin?: string } = await request.json();
@@ -78,7 +78,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { login_id } = params;
   try {
     const result = await query('DELETE FROM hht_logins WHERE login_id = $1 RETURNING login_id', [login_id]);

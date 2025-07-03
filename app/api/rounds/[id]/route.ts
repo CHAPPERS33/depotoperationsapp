@@ -7,7 +7,7 @@ interface RouteParams {
   params: { id: string };
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const result = await query<Round>('SELECT * FROM rounds WHERE id = $1', [id]);
@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     const body: Partial<Omit<Round, 'id' | 'createdAt' | 'updatedAt'>> = await request.json();
@@ -69,7 +69,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const { id } = params;
   try {
     // Check for dependencies like parcel_scan_entries or timeslot_assignments

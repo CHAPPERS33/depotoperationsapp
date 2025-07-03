@@ -8,7 +8,7 @@ interface RouteParams {
   params: { id: string }; // SubDepot ID is number, but route params are string
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
     return NextResponse.json<ApiResponse<null>>({ error: 'Invalid Sub Depot ID format', status: 400 });
@@ -25,7 +25,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: Request, { params }: RouteParams) {
+export async function PUT(_request: Request, { params }: RouteParams) {
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
     return NextResponse.json<ApiResponse<null>>({ error: 'Invalid Sub Depot ID format', status: 400 });
@@ -73,7 +73,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
     return NextResponse.json<ApiResponse<null>>({ error: 'Invalid Sub Depot ID format', status: 400 });
