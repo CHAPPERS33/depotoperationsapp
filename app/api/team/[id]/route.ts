@@ -1,7 +1,7 @@
 // app/api/team/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { TeamMember, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

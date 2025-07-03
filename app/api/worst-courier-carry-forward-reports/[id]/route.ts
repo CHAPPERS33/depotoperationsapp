@@ -1,7 +1,7 @@
 // app/api/worst-courier-carry-forward-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { WorstCourierCarryForwardReport, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

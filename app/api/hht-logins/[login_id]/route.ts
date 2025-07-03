@@ -1,7 +1,7 @@
 // app/api/hht-logins/[login_id]/route.ts
 import { NextResponse } from 'next/server';
 import type { HHTLogin, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { login_id: string };

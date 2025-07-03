@@ -1,7 +1,7 @@
 // app/api/pay-periods/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { PayPeriod, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string }; // ID is UUID TEXT

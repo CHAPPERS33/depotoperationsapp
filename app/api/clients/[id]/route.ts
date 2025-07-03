@@ -1,7 +1,7 @@
 // app/api/clients/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { Client, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string }; // Client ID is number, but route params are string

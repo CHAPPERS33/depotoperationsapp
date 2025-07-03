@@ -1,7 +1,7 @@
 // app/api/hht-assets/[serial_number]/route.ts
 import { NextResponse } from 'next/server';
 import type { HHTAsset, ApiResponse } from '../../../../types';
-import  { query, getClient } from '../../../../lib/db';
+ import  { query } from '../../../../lib/db';
 
 interface RouteParams {
   params: { serial_number: string };
