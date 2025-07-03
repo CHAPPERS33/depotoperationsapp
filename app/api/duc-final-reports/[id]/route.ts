@@ -5,7 +5,7 @@ import type {
     DUCFinalReport, FailedRound, SegregatedParcel, DUCReportAttachment, 
       ApiResponse 
 } from '../../../../types';
-import { query, getClient } from '../../../../lib/db';
+import { query  } from '../../../../lib/db';
 import { handleFileUpload, deleteUploadedFileByRelativePath } from '../../../../lib/fileUpload';
 
 interface RouteParams {
