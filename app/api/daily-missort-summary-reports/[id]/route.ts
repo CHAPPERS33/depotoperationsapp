@@ -2,7 +2,7 @@
 // app/api/daily-missort-summary-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { DailyMissortSummaryReport, ApiResponse } from '../../../../types';
-import { query } from '../../../../lib/db';
+import  { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

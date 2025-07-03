@@ -2,7 +2,7 @@
 // app/api/weekly-missing-summary-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { WeeklyMissingSummaryReport, ApiResponse, WeeklyMissingSummaryParcelDetail } from '../../../../types';
-import { query } from '../../../../lib/db';
+import  { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

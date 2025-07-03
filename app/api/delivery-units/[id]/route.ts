@@ -1,7 +1,7 @@
 // app/api/delivery-units/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { DeliveryUnit, ApiResponse } from '../../../../types';
-import { query } from '../../../../lib/db';
+import  { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

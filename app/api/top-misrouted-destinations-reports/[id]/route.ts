@@ -1,7 +1,7 @@
 // app/api/top-misrouted-destinations-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { TopMisroutedDestinationsReport, ApiResponse } from '../../../../types';
-import { query } from '../../../../lib/db';
+import  { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };

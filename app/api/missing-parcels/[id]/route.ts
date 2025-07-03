@@ -1,7 +1,7 @@
 // app/api/missing-parcels/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { ParcelScanEntry, ApiResponse } from '../../../../types'; // Adjust path
-import { query } from '../../../../lib/db'; // Adjust path
+import  { query, getClient } from '../../../../lib/db'; // Adjust path
 
 interface RouteParams {
   params: { id: string }; // ParcelScanEntry ID (UUID TEXT)

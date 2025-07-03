@@ -1,7 +1,7 @@
 // app/api/client-missing-league-reports/[id]/route.ts
 import { NextResponse } from 'next/server';
 import type { ClientMissingLeagueReport, ApiResponse } from '../../../../types';
-import { query } from '../../../../lib/db';
+import  { query, getClient } from '../../../../lib/db';
 
 interface RouteParams {
   params: { id: string };
