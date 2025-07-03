@@ -4,7 +4,7 @@ import React from 'react';
 import { FileText, LucideIcon, ArchiveX, ShieldAlert, MailWarning, CalendarRange, UserX, CornerUpLeft, ListChecks, PackageX, Shuffle } from 'lucide-react';
 import AppLink from '../../components/shared/AppLink';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '../../contexts/AuthContext';
+
 
 // Define user roles for access control
 type UserRole = 'manager' | 'sorter' | 'cdm' | 'guest' | 'duc';
