@@ -1,5 +1,6 @@
-// app/api/depot-open/route.ts
+// import type { DepotOpenRecord, ApiResponse } from '../../../types';
 import { NextResponse } from 'next/server';
+import type { DepotOpenRecord, ApiResponse } from '../../../types';
 import { query, getClient } from '../../../lib/db';
 
 export async function GET(_request: Request) {
