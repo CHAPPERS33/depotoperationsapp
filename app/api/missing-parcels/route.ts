@@ -27,7 +27,7 @@ const buildSelectQuery = (whereClause: string = "", params: any[] = []) => {
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     // Example filter parameters (can be extended)
     const courierId = searchParams.get('courier_id');
     const roundId = searchParams.get('round_id');

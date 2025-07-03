@@ -76,7 +76,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const formData = await _request.formData(); 
+    const formData = await __request.formData(); 
     
     const pay_period_id = formData.get('pay_period_id') as string;
     const team_member_id = formData.get('team_member_id') as string;

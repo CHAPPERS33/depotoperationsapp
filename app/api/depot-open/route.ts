@@ -5,7 +5,7 @@ import { query, getClient } from '../../../lib/db';
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const date = searchParams.get('date');
     if (!date) {
       return NextResponse.json<ApiResponse<null>>({ error: 'Date parameter is required', status: 400 });

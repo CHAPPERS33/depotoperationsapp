@@ -6,7 +6,7 @@ import { handleFileUpload } from '../../../lib/fileUpload';
 
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = new URL(_request.url);
     const payPeriodId = searchParams.get('pay_period_id');
     const teamMemberId = searchParams.get('team_member_id');
     const status = searchParams.get('status');
@@ -58,7 +58,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const dbClient = await getClient();
   try {
-    const formData = await _request.formData();
+    const formData = await __request.formData();
     
     // Extract main invoice fields from FormData
     const pay_period_id = formData.get('pay_period_id') as string;

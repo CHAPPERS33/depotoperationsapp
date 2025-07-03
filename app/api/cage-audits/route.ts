@@ -62,7 +62,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const dbClient = await getClient(); // Use dbClient for transactions
   try {
-    const formData = await _request.formData();
+    const formData = await __request.formData();
     
     const date = formData.get('date') as string;
     const teamMemberId = formData.get('teamMemberId') as string;

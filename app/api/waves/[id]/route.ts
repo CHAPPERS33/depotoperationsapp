@@ -27,7 +27,7 @@ export async function PUT(_request: Request, { params }: RouteParams) {
   const { id } = params;
   const dbClient = await getClient();
   try {
-    const formData = await _request.formData();
+    const formData = await __request.formData();
     const van_reg = formData.get('van_reg') as string | null;
     const vehicle_type = formData.get('vehicle_type') as VehicleType | null;
     const date = formData.get('date') as string | null;
