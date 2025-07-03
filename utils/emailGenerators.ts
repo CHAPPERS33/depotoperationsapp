@@ -1,5 +1,5 @@
 
-import { DUCFinalReport, SubDepot, Round, FailedRound, SegregatedParcel, `` CageReturnReport, LostPreventionReport, DailyMissortSummaryReport, Client, WeeklyMissingSummaryReport, TeamMember } from '../types';
+import { DUCFinalReport, SubDepot, Round, FailedRound, SegregatedParcel,   CageReturnReport, LostPreventionReport, DailyMissortSummaryReport, Client, WeeklyMissingSummaryReport, TeamMember } from '../types';
 
 export const generateDUCFinalReportEmail = (
   report: DUCFinalReport,

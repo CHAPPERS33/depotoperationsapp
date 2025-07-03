@@ -1,5 +1,5 @@
 
-import { DUCFinalReport, `` RoundEntry, Courier, SubDepot, TeamMember, TimeslotAssignment, Round, ParcelScanEntry } from '../types';
+import { DUCFinalReport,   RoundEntry, Courier, SubDepot, TeamMember, TimeslotAssignment, Round, ParcelScanEntry } from '../types';
 
 export const getTodaysMissingParcelsSummaryForReport = (
   missingParcelsLog: RoundEntry[], // RoundEntry is based on ParcelScanEntry
