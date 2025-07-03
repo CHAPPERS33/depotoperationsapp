@@ -2,7 +2,7 @@
 // app/api/availability/[compositeId]/route.ts
 import { NextResponse } from 'next/server';
 import type { ApiResponse } from '../../../../types'; // Adjust path as necessary
-import  { query, getClient } from '../../../../lib/db'; // Adjust path as necessary
+import  { query } from '../../../../lib/db'; // Adjust path as necessary
 
 interface RouteParams {
   params: { compositeId: string }; // e.g., "TM001__2024-08-15"
