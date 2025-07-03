@@ -1,6 +1,6 @@
 // app/api/missing-parcels/route.ts
 import { NextResponse } from 'next/server';
-import type { ParcelScanEntry, ApiResponse } from '../../../../types';
+import type { ParcelScanEntry, ApiResponse } from '../../../types';
 import { query  } from '../../../lib/db';
 
 // Helper function to build the SELECT query with joins
