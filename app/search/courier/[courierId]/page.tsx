@@ -27,13 +27,12 @@ export default function CourierProfileDisplayPage() {
   } = useSharedState();
   
   useEffect(() => {
-    const pathParts = currentPathname.split('/');
-    if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'courier') {
-      setCourierId(pathParts[3]);
-    } else {
-      setCourierId(null); 
-    }
-  }, [currentPathname]);
+  if (!currentPathname) return; // Add this null check
+  
+  const pathParts = currentPathname.split('/');
+  if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'courier') {
+    setCourierId(pathParts[3]);
+  } else {
 
   useEffect(() => {
     if (courierId) {
