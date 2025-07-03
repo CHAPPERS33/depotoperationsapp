@@ -27,8 +27,8 @@ function NavLink({ item }: { item: NavItemType }) {
   
   // Active state logic needs to be based on Next.js pathname
   const isActive = item.subView 
-    ? currentPathname === item.path // Query params are not part of pathname, handle subView differently if needed
-    : currentPathname === item.path || (item.path !== '/' && currentPathname.startsWith(item.path + '/'));
+  ? currentPathname === item.path // Query params are not part of pathname, handle subView differently if needed
+  : currentPathname === item.path || (item.path !== '/' && currentPathname?.startsWith(item.path + '/'));
   
   const activeClasses = `bg-${item.color}-100 text-${item.color}-600 border-r-4 border-${item.color}-500`;
   const inactiveClasses = 'text-gray-600 hover:bg-gray-100 hover:text-gray-900';
