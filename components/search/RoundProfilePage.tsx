@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'; // Changed from useHashRouter
 import { useSharedState } from '../../../hooks/useSharedState';
 import { getRoundProfileDetails } from '../../../utils/searchUtils';
 import { RoundProfileData, ParcelScanEntry } from '../../../types'; 
-import { MapPin, Package, TrendingUp, AlertTriangle, CheckCircle2, ExternalLink, Clock } from 'lucide-react';
+import { MapPin, AlertTriangle, ExternalLink, Clock } from 'lucide-react';
 import Button from '../../../components/shared/Button';
 
 export default function RoundProfileDisplayPage() {

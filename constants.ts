@@ -1,6 +1,6 @@
 
 
-import { DeliveryUnit, SubDepot, Round, Courier, Client, Vehicle, DepotOpenRecord, WaveEntry, HHTAsset, HHTLogin, TimeslotTemplate, EmailTrigger, AlertConfig, ScanLog, AvailabilityRecord, CageAuditEntry, CageReturnReport, TeamMember, PayPeriod, Forecast, ForecastVolume, WorkSchedule, Invoice, InvoiceLine, DUCFinalReport, TimeslotAssignment, ScanActivity, ForecastActivity, RoundEntry, LostPreventionReport, DailyMissortSummaryReport, WeeklyMissingSummaryReport, WorstCourierPerformanceReport, WorstRoundPerformanceReport, ClientMissingLeagueReport, TopMisroutedDestinationsReport, WorstCourierCarryForwardReport, ParcelScanEntry } from './types';
+import { DeliveryUnit, SubDepot, Round, Courier, Client, Vehicle, DepotOpenRecord, WaveEntry, HHTAsset, HHTLogin, TimeslotTemplate, EmailTrigger, AlertConfig, ScanLog, AvailabilityRecord, CageAuditEntry, CageReturnReport, TeamMember, PayPeriod, Forecast, WorkSchedule, Invoice, DUCFinalReport, TimeslotAssignment, ScanActivity, ForecastActivity, RoundEntry, LostPreventionReport, DailyMissortSummaryReport, WeeklyMissingSummaryReport, WorstCourierPerformanceReport, WorstRoundPerformanceReport, ClientMissingLeagueReport, TopMisroutedDestinationsReport, WorstCourierCarryForwardReport } from './types';
 
 export const TODAY_DATE_STRING = new Date().toISOString().slice(0, 10);
 const yesterday = new Date();

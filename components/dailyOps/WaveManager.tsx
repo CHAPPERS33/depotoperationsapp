@@ -10,7 +10,7 @@ import Modal from '../shared/Modal';
 import { TODAY_DATE_STRING } from '../../constants';
 
 const WaveManager: React.FC = () => {
-  const { waves, setWaves, vehicles, setVehicles, addWaveEntry, addVehicle: apiAddVehicle } = useSharedState();
+  const { waves, setWaves, vehicles, addWaveEntry, addVehicle: apiAddVehicle } = useSharedState();
 
   const [tempSelectedVehicleId, setTempSelectedVehicleId] = useState<string>('');
   const [showNewVehicleFormInWaves, setShowNewVehicleFormInWaves] = useState<boolean>(false);

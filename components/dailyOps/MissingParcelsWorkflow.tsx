@@ -61,11 +61,10 @@ const MissingParcelsWorkflow: React.FC = () => {
   const [isHighPriorityModalOpen, setIsHighPriorityModalOpen] = useState<boolean>(false);
   const [highPriorityChecklistStep, setHighPriorityChecklistStep] = useState<number>(0);
   const [parcelForHighPriorityProcessing, setParcelForHighPriorityProcessing] = useState<RoundEntry | Partial<ParcelScanEntry> | null>(null);
-  const [isEditingHighPriorityParcel, setIsEditingHighPriorityParcel] = useState<boolean>(false);
   const [highPriorityActionCallback, setHighPriorityActionCallback] = useState<(() => void) | null>(null);
   const [currentHighPriorityAlert, setCurrentHighPriorityAlert] = useState<string | null>(null);
 
-  const [trackingStatuses, setTrackingStatuses] = useState<Record<string, TrackingStatus>>({});
+  const [trackingStatuses] = useState<Record<string, TrackingStatus>>({});
   const [isManualRefreshing, setIsManualRefreshing] = useState<boolean>(false);
   const [lastManualRefreshAllTimestamp, setLastManualRefreshAllTimestamp] = useState<number>(0);
   const REFRESH_ALL_COOLDOWN = 30000; 
@@ -155,11 +154,10 @@ const MissingParcelsWorkflow: React.FC = () => {
       }
       setIsSubmittingForm(false);
     };
-    if (clientIsHighPriority && !entry.is_recovered) { setIsEditingHighPriorityParcel(false); openHighPriorityModal(entry, action); } else { action(); }
+    if (clientIsHighPriority && !entry.is_recovered) { openHighPriorityModal(entry, action); } else { action(); }
   };
-  
   const handleEditParcelClick = (parcel: RoundEntry) => { const clientIsHighPriority = clients.find(c => c.id === parcel.client_id)?.is_high_priority; if (clientIsHighPriority && !parcel.is_recovered) { setIsEditingHighPriorityParcel(true); openHighPriorityModal(parcel, () => openEditModal(parcel)); } else { openEditModal(parcel); }};
-  const fetchSingleParcelStatus = useCallback(async (logId: string, barcode: string) => { if (barcode.length !== 16) { setTrackingStatuses(prev => ({ ...prev, [logId]: { status: 'N/A (Invalid Barcode)', isLoading: false } })); return; } setTrackingStatuses(prev => { if (prev[logId]?.isLoading) return prev; return { ...prev, [logId]: { status: 'Fetching...', isLoading: true, error: null } }; }); try { const response = await fetch(`/api/track-parcel?barcode=${barcode}`); const data = await response.json(); if (response.status === 429) { setTrackingStatuses(prev => ({ ...prev, [logId]: { status: data.status || 'Rate limited', isLoading: false, error: data.error || 'Rate limited. Try again later.', lastUpdated: Date.now(), note: data.note }})); } else if (!response.ok || data.error) { throw new Error(data.error || data.status || `API error ${response.status}`); } else if (data.status) { setTrackingStatuses(prev => ({ ...prev, [logId]: { status: data.status, isLoading: false, lastUpdated: Date.now(), error: null, trackingUrl: data.trackingUrl, note: data.note }})); } else { throw new Error('Unexpected response from tracking API'); } } catch (error) { console.error(`Error tracking parcel ${barcode} for logId ${logId}:`, error); setTrackingStatuses(prev => ({ ...prev, [logId]: { status: 'Unable to fetch', isLoading: false, error: (error as Error).message, lastUpdated: Date.now(), note: 'Error during fetch.' }})); } }, []);
+  const handleEditParcelClick = (parcel: RoundEntry) => { const clientIsHighPriority = clients.find(c => c.id === parcel.client_id)?.is_high_priority; if (clientIsHighPriority && !parcel.is_recovered) { openHighPriorityModal(parcel, () => openEditModal(parcel)); } else { openEditModal(parcel); }};
   const refreshAllTrackingStatuses = useCallback(async (isManual = false) => { if (isManual) { setIsManualRefreshing(true); setLastManualRefreshAllTimestamp(Date.now()); setProcessedLogIdsForSessionFetch(new Set()); } else { const now = Date.now(); if (now - lastManualRefreshAllTimestamp < REFRESH_ALL_COOLDOWN) { return; } } const promises = todaysMissingParcelsLog.filter(parcel => parcel.id && parcel.barcode && parcel.barcode.length === 16).map(parcel => { if (isManual) { return fetchSingleParcelStatus(parcel.id!, parcel.barcode); } return Promise.resolve(); }); await Promise.all(promises); if (isManual) setIsManualRefreshing(false); }, [todaysMissingParcelsLog, fetchSingleParcelStatus, lastManualRefreshAllTimestamp, setProcessedLogIdsForSessionFetch]);
   useEffect(() => { const newProcessedIds = new Set(processedLogIdsForSessionFetch); let fetchInitiated = false; todaysMissingParcelsLog.forEach(parcel => { if (parcel.id && parcel.barcode && parcel.barcode.length === 16) { if (!newProcessedIds.has(parcel.id)) { fetchSingleParcelStatus(parcel.id, parcel.barcode); newProcessedIds.add(parcel.id); fetchInitiated = true; } } }); if (fetchInitiated) { setProcessedLogIdsForSessionFetch(newProcessedIds); } }, [todaysMissingParcelsLog, fetchSingleParcelStatus, processedLogIdsForSessionFetch]);
 

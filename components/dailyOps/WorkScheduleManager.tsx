@@ -27,7 +27,7 @@ const initialWorkScheduleFormState: Partial<WorkSchedule> = {
 
 const WorkScheduleManager: React.FC = () => {
   const {
-    workSchedules, setWorkSchedules, // Directly using setWorkSchedules for local updates
+    workSchedules, // Directly using setWorkSchedules for local updates
     team,
     subDepots,
     forecasts,

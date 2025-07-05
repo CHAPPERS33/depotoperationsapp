@@ -20,7 +20,6 @@ const LostPreventionReportManager: React.FC = () => {
     deleteLostPreventionReport,
     couriers,
     rounds,
-    team, 
   } = useSharedState();
 
   const initialFormState: Partial<Omit<LostPreventionReport, 'id' | 'submitted_at' | 'created_at' | 'updated_at' | 'submitted_by_name' | 'courier_name' | 'attachments' >> & { tempRoundId?: string, cctvFile?: File | null, vanSearchFile?: File | null } = {

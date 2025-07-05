@@ -7,7 +7,7 @@ interface DashboardMetricCardProps {
   metric: DashboardMetric;
 }
 
-const LineSparkline: React.FC<{ trend: number[]; color: string; unit?: string }> = ({ trend, color, unit }) => {
+const LineSparkline: React.FC<{ trend: number[]; color: string; unit?: string }> = ({ trend, color }: { trend: number[]; color: string; unit?: string }) => {
   if (!trend || trend.length < 2) return <div className="h-10 text-center text-xs text-gray-400">Not enough data for trend.</div>;
 
   const width = 100;
@@ -86,7 +86,7 @@ const Gauge: React.FC<{ value: number | string; target?: number; color: string; 
 
 
 const DashboardMetricCard: React.FC<DashboardMetricCardProps> = ({ metric }) => {
-  const { icon: Icon, title, value, change, changeType, color, trend, target, unit, visualType } = metric;
+  const { icon: Icon, title, value, change, color, trend, target, unit, visualType } = metric;
 
   const isChangeBeneficial =
     (metric.id === 'kpi_performance' || metric.id === 'missort_analysis' || metric.id === 'missing_parcels' || metric.id === 'overall_no_scans' || metric.id === 'overall_carry_forwards')

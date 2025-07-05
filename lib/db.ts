@@ -1,5 +1,5 @@
 // lib/db.ts
-import { Pool, QueryResultRow } from 'pg';
+import { Pool, QueryResultRow, PoolClient } from 'pg';
 
 let pool: Pool;
 
@@ -21,7 +21,7 @@ const getDBConfig = () => {
 if (!pool) {
   pool = new Pool(getDBConfig());
 
-  pool.on('error', (err, client) => {
+  pool.on('error', (err, _client: PoolClient) => {
     console.error('Unexpected error on idle client', err);
     // process.exit(-1); // Avoid process.exit in serverless environments if possible
   });
@@ -30,9 +30,8 @@ if (!pool) {
 export const query = async <T extends QueryResultRow = any>(text: string, params?: any[]): Promise<T[]> => {
   const client = await pool.connect();
   try {
-    const start = Date.now();
     const res = await client.query<T>(text, params);
-    const duration = Date.now() - start;
+    // const duration = Date.now() - start;
     // console.log('executed query', { text, params: params?.map(p => typeof p === 'string' && p.length > 50 ? p.substring(0,50) + '...' : p), duration, rows: res.rowCount });
     return res.rows;
   } catch (error) {

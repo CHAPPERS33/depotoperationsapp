@@ -12,7 +12,7 @@ import { TODAY_DATE_STRING } from '../../constants';
 
 const InvoiceManager: React.FC = () => {
   const { 
-    invoices, setInvoices, // Using setInvoices for local state updates
+    invoices, // Using invoices for local state updates
     payPeriods, 
     team,
     workSchedules,
@@ -33,7 +33,7 @@ const InvoiceManager: React.FC = () => {
   const [generateInvoicePayPeriodId, setGenerateInvoicePayPeriodId] = useState<string>('');
   const [generateInvoiceTeamMemberId, setGenerateInvoiceTeamMemberId] = useState<string>('');
   
-  const [invoiceFilters, setInvoiceFilters] = useState<{payPeriodId: string, teamMemberId: string, status: string}>({payPeriodId: '', teamMemberId: '', status: ''});
+  // const [invoiceFilters, setInvoiceFilters] = useState<{payPeriodId: string, teamMemberId: string, status: string}>({payPeriodId: '', teamMemberId: '', status: ''});
   
   const [showInvoiceSuccessModal, setShowInvoiceSuccessModal] = useState<boolean>(false);
   const [invoiceSuccessMessage, setInvoiceSuccessMessage] = useState<string>('');

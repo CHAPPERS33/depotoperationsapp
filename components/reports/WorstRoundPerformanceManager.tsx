@@ -12,7 +12,6 @@ import { getIsoWeek, getWeekDates } from '../../utils/dateUtils';
 const WorstRoundPerformanceManager: React.FC = () => {
   const {
     missingParcelsLog,
-    rounds,
     subDepots,
     worstRoundPerformanceReports,
     addWorstRoundPerformanceReport,
@@ -87,7 +86,7 @@ const WorstRoundPerformanceManager: React.FC = () => {
     setEmailPreviewContent({subject, body}); 
     setEmailPreviewModalOpen(true); 
   };
-  const handleSendEmail = (report: WorstRoundPerformanceReport) => { alert("Email sending not fully implemented."); };
+  const handleSendEmail = () => { alert("Email sending not fully implemented."); };
 
   return (
     <div className="space-y-6">

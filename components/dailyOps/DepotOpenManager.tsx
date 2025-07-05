@@ -150,15 +150,6 @@ const DepotOpenManager: React.FC = () => {
     setIsSubmitting(false);
   };
   
-  const handleDeleteOverride = async (overrideId: string) => {
-     // For now, this functionality would require a DELETE /api/depot-open/[id] endpoint
-     // and corresponding function in useSharedState.
-     // Placeholder:
-     alert('Delete functionality for specific overrides not yet fully implemented with API.');
-     // Example local removal (will be reverted on next fetch if not API backed):
-     // setDepotOpenRecords(prev => prev.filter(r => r.id !== overrideId));
-     // displaySuccessMessage('Sub-Depot override marked for deletion (locally).');
-  };
 
   return (
     <div className="space-y-8">

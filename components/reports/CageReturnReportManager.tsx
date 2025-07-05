@@ -17,8 +17,7 @@ const CageReturnReportManager: React.FC = () => {
     couriers,
     missingParcelsLog,
     cageReturnReports,
-    addOrUpdateCageReturnReport,
-    team 
+    addOrUpdateCageReturnReport
   } = useSharedState();
 
   const [selectedDate, setSelectedDate] = useState<string>(TODAY_DATE_STRING);

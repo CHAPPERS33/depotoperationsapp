@@ -92,8 +92,7 @@ const AvailabilityCalendarManager: React.FC = () => {
   const handleMarkWeek = (status: 'Available' | 'Unavailable' | 'Clear') => {
     if (!selectedTeamMemberId) return;
     const firstDayOfWeek = new Date(currentDate);
-    const targetDate = new Date(firstDayOfMonth);
-    targetDate.setDate(targetDate.getDate() - startingDayOfWeek); 
+    const targetDate = new Date(firstDayOfWeek); 
 
     for (let i = 0; i < 7; i++) {
       const dateStr = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate() + i).toISOString().split('T')[0];

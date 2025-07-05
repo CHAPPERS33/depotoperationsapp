@@ -53,8 +53,8 @@ export default function CourierProfileDisplayPage() {
     }
     if (confirm(`Mark all ${profileData.stats.unrecovered} unrecovered parcels for ${profileData.name} as recovered?`)) {
         const updatedLog = missingParcelsLog.map(p => {
-            if (p.courier_id === courierId && !p.is_recovered && p.id) { 
-                return { ...p, is_recovered: true, recovery_date: new Date().toISOString().split('T')[0] };
+            if (p.courier === courierId && !p.recovered && p.id) { 
+                return { ...p, recovered: true, recovery_date: new Date().toISOString().split('T')[0] };
             }
             return p;
         });
@@ -172,7 +172,7 @@ export default function CourierProfileDisplayPage() {
                 .slice(0, 25)
                 .map(([date, parcelsOnDate]: [string, ParcelScanEntry[]]) => (
                   <div key={date} className="border-l-4 border-blue-500 pl-4 py-2">
-                    <div className="flex justify-between items-center mb-2"> <h4 className="font-semibold text-gray-800">{date}</h4> <span className="text-sm text-gray-500">{parcelsOnDate.length} parcel{parcelsOnDate.length !== 1 ? 's' : ''} | {parcelsOnDate.filter(p => p.is_recovered).length} recovered</span> </div>
+                    <div className="flex justify-between items-center mb-2"> <h4 className="font-semibold text-gray-800">{date}</h4> <span className="text-sm text-gray-500">{parcelsOnDate.length} parcel{parcelsOnDate.length !== 1 ? 's' : ''} | {parcelsOnDate.filter(p => p.recovered).length} recovered</span> </div>
                     <div className="space-y-3">
                       {parcelsOnDate.map(parcel => {
                         const subDepotInfo = subDepots.find(s => s.id === parcel.sub_depot_id);
@@ -181,16 +181,16 @@ export default function CourierProfileDisplayPage() {
                         const displayDate = parcel.created_at ? new Date(parcel.created_at).toLocaleDateString('en-GB') : date;
 
                         return (
-                          <div key={parcel.id || `${parcel.barcode}-${parcel.round_id}-${displayDate}`} className={`p-3 rounded-md border ${parcel.is_recovered ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                          <div key={parcel.id || `${parcel.barcode}-${parcel.round_id}-${displayDate}`} className={`p-3 rounded-md border ${parcel.recovered ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
                             <div className="flex flex-col sm:flex-row justify-between items-start">
                               <div className="flex-1 mb-2 sm:mb-0">
                                 <div className="flex items-center gap-2 mb-1">
                                   <a href={`https://www.evri.com/track/parcel/${parcel.barcode}/details`} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-blue-600 hover:underline flex items-center gap-1"> {parcel.barcode} <ExternalLink size={14}/> </a>
-                                  <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${ parcel.is_recovered ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' }`}> {parcel.is_recovered ? 'Recovered' : 'Missing'} </span>
+                                  <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${ parcel.recovered ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800' }`}> {parcel.recovered ? 'Recovered' : 'Missing'} </span>
                                 </div>
                                 <p className="text-xs text-gray-600"> Round {parcel.round_id}/Drop {parcel.drop_number} • {subDepotInfo?.name || `Sub ${parcel.sub_depot_id}`} • Sorter: {sorterInfo?.name || parcel.sorter_team_member_id || 'N/A'} • Client: {clientInfo?.name || parcel.client_id} • Scanned: {new Date(parcel.time_scanned).toLocaleTimeString('en-GB')} </p>
                               </div>
-                              {!parcel.is_recovered && parcel.id && ( <Button onClick={() => handleMarkSingleRecovered(parcel.id!, parcel.is_recovered || false)} variant="primary" size="sm" className="self-start sm:self-center">Mark Found</Button> )}
+                              {!parcel.recovered && parcel.id && ( <Button onClick={() => handleMarkSingleRecovered(parcel.id!, parcel.recovered || false)} variant="primary" size="sm" className="self-start sm:self-center">Mark Found</Button> )}
                             </div>
                           </div>
                         );

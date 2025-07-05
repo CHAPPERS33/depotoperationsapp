@@ -282,7 +282,6 @@ const ForecastManager: React.FC = () => {
               <thead className="bg-gray-50"><tr>{['Date', 'Pay Period', 'Total Volume', 'Est. Hrs (Calc)', 'Planned Shift', 'Sub-Depot Volumes', 'Notes', 'Actions'].map(header => (<th key={header} className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">{header}</th>))}</tr></thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {forecasts.map(f => {
-                    const payPeriodInfo = payPeriods.find(pp => pp.id === f.pay_period_id);
                     return (
                         <React.Fragment key={f.id}>
                         <tr className="hover:bg-gray-50">

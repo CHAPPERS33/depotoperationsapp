@@ -126,7 +126,7 @@ const WorstCourierPerformanceManager: React.FC = () => {
      setEmailPreviewContent({subject, body});
      setEmailPreviewModalOpen(true);
   };
-  const handleSendEmail = (report: WorstCourierPerformanceReport) => { alert("Email sending functionality not fully implemented."); };
+  const handleSendEmail = () => { alert("Email sending functionality not fully implemented."); };
 
   return (
     <div className="space-y-6">

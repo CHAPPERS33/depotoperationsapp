@@ -80,7 +80,7 @@ const WorstCourierCarryForwardManager: React.FC = () => {
     setEmailPreviewContent({subject, body}); 
     setEmailPreviewModalOpen(true); 
   };
-  const handleSendEmail = (report: WorstCourierCarryForwardReport) => { alert("Email sending not fully implemented."); };
+  const handleSendEmail = () => { alert("Email sending not fully implemented."); };
 
   return (
     <div className="space-y-6">

@@ -18,7 +18,6 @@ const DailyMissortSummaryManager: React.FC = () => {
     subDepots,
     clients,
     rounds,
-    team, 
   } = useSharedState();
 
   const [reportDate, setReportDate] = useState<string>(TODAY_DATE_STRING);

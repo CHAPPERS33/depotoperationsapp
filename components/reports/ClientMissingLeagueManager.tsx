@@ -69,8 +69,14 @@ const ClientMissingLeagueManager: React.FC = () => {
       .map((c, index) => ({ ...c, rank: index + 1 }));
 
     const report: ClientMissingLeagueReport = {
-      id: `CML-${Date.now()}`, periodType, startDate: startDateStr, endDate: endDateStr,
-      clients: sortedClients, generatedAt: new Date().toISOString(), generatedBy: 'System',
+      id: `CML-${Date.now()}`,
+      periodType,
+      startDate: startDateStr,
+      endDate: endDateStr,
+      clients: sortedClients,
+      generatedAt: new Date().toISOString(),
+      generatedBy: 'System',
+      submitted_by_team_member_id: '', // or provide a valid team member id if available
     };
     setGeneratedReport(report);
   };
@@ -85,7 +91,7 @@ const ClientMissingLeagueManager: React.FC = () => {
     setEmailPreviewContent({subject, body}); 
     setEmailPreviewModalOpen(true); 
   };
-  const handleSendEmail = (report: ClientMissingLeagueReport) => { alert("Email sending not fully implemented."); };
+  const handleSendEmail = () => { alert("Email sending not fully implemented."); };
 
   return (
     <div className="space-y-6">
