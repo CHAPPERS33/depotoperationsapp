@@ -312,7 +312,14 @@ const CageAuditManager: React.FC = () => {
 
         <div className="border-t pt-4">
           <label htmlFor="notes" className="block text-sm font-medium text-gray-700">Notes</label>
-          <textarea name="notes" id="notes" value={formData.notes} onChange={handleInputChange} rows={3} className="mt-1 block w-full p-2 border-gray-300 rounded-md shadow-sm"></textarea>
+          <textarea 
+  name="notes" 
+  id="notes" 
+  value={formData.notes || ''} 
+  onChange={handleInputChange} 
+  rows={3} 
+  className="mt-1 block w-full p-2 border-gray-300 rounded-md shadow-sm"
+/>
         </div>
 
         <div className="flex justify-end pt-2">
