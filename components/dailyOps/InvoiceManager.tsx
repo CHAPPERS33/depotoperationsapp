@@ -139,7 +139,13 @@ const InvoiceManager: React.FC = () => {
   };
 
   const handleUpdateInvoiceStatusRequest = (invoiceId: string, newStatus: Invoice['status'], invoiceNumber?: string | null) => {
-    const actionText = { Draft: 'mark as Draft', Sent: 'mark as Sent', Paid: 'mark as Paid', Void: 'void' }[newStatus] || `change to ${newStatus}`;
+    const actionText = { 
+  Draft: 'mark as Draft', 
+  Sent: 'mark as Sent', 
+  Paid: 'mark as Paid', 
+  Void: 'void',
+  Overdue: 'mark as Overdue' // Add this line
+}[newStatus] || `change to ${newStatus}`;
     setConfirmationMessage(`Are you sure you want to ${actionText} invoice ${invoiceNumber || invoiceId.slice(-6)}?`);
     setConfirmationAction(() => () => executeUpdateInvoiceStatus(invoiceId, newStatus, invoiceNumber));
     setIsConfirmModalOpen(true);
