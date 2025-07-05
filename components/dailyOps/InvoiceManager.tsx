@@ -145,7 +145,7 @@ const InvoiceManager: React.FC = () => {
 //   if (saved) {
 //     setSelectedInvoiceForView(saved);
 //     setInvoiceSuccessMessage(`Invoice draft saved successfully.
-Total: £${totalAmount.toFixed(2)} (${totalHours.toFixed(2)}h)`);
+Total: \u00A3${totalAmount.toFixed(2)} (${totalHours.toFixed(2)}h)`);
 //     setShowInvoiceSuccessModal(true);
 //   } else {
 //     setInvoiceFormError('Failed to save invoice edits.');
