@@ -7,15 +7,6 @@ import { RoundEntry, Client, Courier, DeliveryUnit, ParcelScanEntry } from '../.
 import {Loader2 } from 'lucide-react';
 import { TODAY_DATE_STRING_GB } from '../../constants';
 
-interface TrackingStatus {
-  status: string;
-  isLoading: boolean;
-  error?: string | null;
-  lastUpdated?: number;
-  trackingUrl?: string;
-  note?: string;
-}
-
 const MissingParcelsWorkflow: React.FC = () => {
   const {
     missingParcelsLog,
@@ -32,16 +23,16 @@ const MissingParcelsWorkflow: React.FC = () => {
     addDeliveryUnit: apiAddDeliveryUnit,
     } = useSharedState();
 
-  const [currentCourierForWorkflow, setCurrentCourierForWorkflow] = useState<string>('');
-  const [showNewCourierFormInWorkflow, setShowNewCourierFormInWorkflow] = useState<boolean>(false);
+  const [ setCurrentCourierForWorkflow] = useState<string>('');
+  const [setShowNewCourierFormInWorkflow] = useState<boolean>(false);
   const [newCourierNameForWorkflow, setNewCourierNameForWorkflow] = useState<string>('');
   const [newCourierIdForWorkflow, setNewCourierIdForWorkflow] = useState<string>('');
 
   const [selectedRoundEntries, setSelectedRoundEntries] = useState<Partial<ParcelScanEntry>[]>([{}]);
-  const [tempRoundSelect, setTempRoundSelect] = useState<string>('');
+  const [setTempRoundSelect] = useState<string>('');
   const [newClientNameForWorkflow, setNewClientNameForWorkflow] = useState<string>('');
 
-  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [setIsEditModalOpen] = useState<boolean>(false);
   const [parcelToEdit, setParcelToEdit] = useState<RoundEntry | null>(null);
   const [currentEditData, setCurrentEditData] = useState<Partial<ParcelScanEntry>>({});
 
@@ -53,18 +44,17 @@ const MissingParcelsWorkflow: React.FC = () => {
   const [editModalNewDeliveryUnitId, setEditModalNewDeliveryUnitId] = useState<string>('');
   const [editModalNewDeliveryUnitName, setEditModalNewDeliveryUnitName] = useState<string>('');
 
-  const [isHighPriorityModalOpen, setIsHighPriorityModalOpen] = useState<boolean>(false);
+  const [setIsHighPriorityModalOpen] = useState<boolean>(false);
   const [highPriorityChecklistStep, setHighPriorityChecklistStep] = useState<number>(0);
-  const [parcelForHighPriorityProcessing, setParcelForHighPriorityProcessing] = useState<RoundEntry | Partial<ParcelScanEntry> | null>(null);
+  const [setParcelForHighPriorityProcessing] = useState<RoundEntry | Partial<ParcelScanEntry> | null>(null);
   const [highPriorityActionCallback, setHighPriorityActionCallback] = useState<(() => void) | null>(null);
-  const [currentHighPriorityAlert, setCurrentHighPriorityAlert] = useState<string | null>(null);
+  const [setCurrentHighPriorityAlert] = useState<string | null>(null);
 
-  const [trackingStatuses] = useState<Record<string, TrackingStatus>>({});
-  const [isManualRefreshing, setIsManualRefreshing] = useState<boolean>(false);
+  const [setIsManualRefreshing] = useState<boolean>(false);
   const [lastManualRefreshAllTimestamp, setLastManualRefreshAllTimestamp] = useState<number>(0);
   const REFRESH_ALL_COOLDOWN = 30000;
   const [processedLogIdsForSessionFetch, setProcessedLogIdsForSessionFetch] = useState<Set<string>>(new Set());
-  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+  const [setIsSubmittingForm] = useState(false);
 
   useEffect(() => {
     fetchMissingParcelsLog();
