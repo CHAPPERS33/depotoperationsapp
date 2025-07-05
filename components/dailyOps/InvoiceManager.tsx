@@ -38,8 +38,8 @@ const InvoiceManager: React.FC = () => {
   const [isLoadingComponent, setIsLoadingComponent] = useState(false);
   const [invoiceFormError, setInvoiceFormError] = useState<string | null>(null);
   const [selectedInvoiceForView, setSelectedInvoiceForView] = useState<Invoice | null>(null);
-  const [editableInvoiceLines, setEditableInvoiceLines] = useState<EditableInvoiceLine[]>([]);
-  const [editingInvoiceNotes, setEditingInvoiceNotes] = useState('');
+  // const [editableInvoiceLines, setEditableInvoiceLines] = useState<EditableInvoiceLine[]>([]);
+  // const [editingInvoiceNotes, setEditingInvoiceNotes] = useState('');
   const [generateInvoicePayPeriodId, setGenerateInvoicePayPeriodId] = useState('');
   const [generateInvoiceTeamMemberId, setGenerateInvoiceTeamMemberId] = useState('');
   const [invoiceSuccessMessage, setInvoiceSuccessMessage] = useState('');
@@ -115,42 +115,43 @@ const InvoiceManager: React.FC = () => {
     setIsLoadingComponent(false);
   };
 
-  const handleSaveInvoiceEdits = async () => {
-    if (!selectedInvoiceForView) return;
-    setInvoiceFormError(null);
-    setIsLoadingComponent(true);
+  // const handleSaveInvoiceEdits = async () => {
+//   if (!selectedInvoiceForView) return;
+//   setInvoiceFormError(null);
+//   setIsLoadingComponent(true);
 
-    const totalHours = editableInvoiceLines.reduce((sum, l) => sum + Number(l.hours || 0), 0);
-    const totalAmount = editableInvoiceLines.reduce((sum, l) => sum + Number(l.amount || 0), 0);
+//   const totalHours = editableInvoiceLines.reduce((sum, l) => sum + Number(l.hours || 0), 0);
+//   const totalAmount = editableInvoiceLines.reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
-    const completeLines: InvoiceLine[] = editableInvoiceLines.map(line => ({
-      id: line.id?.toString() || '',
-      invoice_id: selectedInvoiceForView.id,
-      date: line.date,
-      description: line.description,
-      hours: Number(line.hours) || 0,
-      rate: Number(line.rate) || 0,
-      amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
-      type: line.type,
-      work_schedule_id: line.work_schedule_id,
-    }));
+//   const completeLines: InvoiceLine[] = editableInvoiceLines.map(line => ({
+//     id: line.id?.toString() || '',
+//     invoice_id: selectedInvoiceForView.id,
+//     date: line.date,
+//     description: line.description,
+//     hours: Number(line.hours) || 0,
+//     rate: Number(line.rate) || 0,
+//     amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
+//     type: line.type,
+//     work_schedule_id: line.work_schedule_id,
+//   }));
 
-    const formData = new FormData();
-    formData.append('lines', JSON.stringify(completeLines));
-    formData.append('notes', editingInvoiceNotes);
-    formData.append('total_hours', totalHours.toString());
-    formData.append('total_amount', totalAmount.toFixed(2));
+//   const formData = new FormData();
+//   formData.append('lines', JSON.stringify(completeLines));
+//   formData.append('notes', editingInvoiceNotes);
+//   formData.append('total_hours', totalHours.toString());
+//   formData.append('total_amount', totalAmount.toFixed(2));
 
-    const saved = await apiSaveInvoice(formData, false, selectedInvoiceForView.id);
-    if (saved) {
-      setSelectedInvoiceForView(saved);
-      setInvoiceSuccessMessage(`Invoice draft saved successfully.\nTotal: £${totalAmount.toFixed(2)} (${totalHours.toFixed(2)}h)`);
-      setShowInvoiceSuccessModal(true);
-    } else {
-      setInvoiceFormError('Failed to save invoice edits.');
-    }
-    setIsLoadingComponent(false);
-  };
+//   const saved = await apiSaveInvoice(formData, false, selectedInvoiceForView.id);
+//   if (saved) {
+//     setSelectedInvoiceForView(saved);
+//     setInvoiceSuccessMessage(`Invoice draft saved successfully.
+Total: £${totalAmount.toFixed(2)} (${totalHours.toFixed(2)}h)`);
+//     setShowInvoiceSuccessModal(true);
+//   } else {
+//     setInvoiceFormError('Failed to save invoice edits.');
+//   }
+//   setIsLoadingComponent(false);
+// };
 
   return (
     <div className="p-4">
