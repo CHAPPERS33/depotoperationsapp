@@ -8,6 +8,7 @@ import { Save, Plus, Edit, CheckCircle2, Loader2 } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { TODAY_DATE_STRING } from '../../constants';
+import { DepotOpenRecord } from '../../types';
 
 const DepotOpenManager: React.FC = () => {
   const { 
