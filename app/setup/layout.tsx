@@ -9,7 +9,7 @@ import { ChevronLeft } from 'lucide-react';
 export default function SetupLayout({ children }: { children: ReactNode }) {
   const currentPathname = usePathname();
   const searchParams = useSearchParams();
-  const viewParam = searchParams.get('view');
+const viewParam = searchParams ? searchParams.get('view') : null;
 
   // Show back link if not on /setup or /setup?view=menu
   const showBackLink = !(currentPathname === '/setup' && (viewParam === null || viewParam === 'menu'));
