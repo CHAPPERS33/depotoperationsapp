@@ -33,7 +33,7 @@ const InvoiceManager: React.FC = () => {
   const [generateInvoicePayPeriodId, setGenerateInvoicePayPeriodId] = useState<string>('');
   const [generateInvoiceTeamMemberId, setGenerateInvoiceTeamMemberId] = useState<string>('');
   
-  // const [invoiceFilters, setInvoiceFilters] = useState<{
+  const [invoiceFilters, setInvoiceFilters] = useState<{
   payPeriodId: string | null;
   teamMemberId: string | null;
   status: string | null;
@@ -42,7 +42,7 @@ const InvoiceManager: React.FC = () => {
   teamMemberId: null,
   status: null
 });
-  
+
   const [showInvoiceSuccessModal, setShowInvoiceSuccessModal] = useState<boolean>(false);
   const [invoiceSuccessMessage, setInvoiceSuccessMessage] = useState<string>('');
 
