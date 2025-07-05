@@ -24,13 +24,15 @@ export default function RoundProfileDisplayPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const pathParts = currentPathname.split('/');
-    if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'round') {
-      setRoundId(pathParts[3]);
-    } else {
-      setRoundId(null);
-    }
-  }, [currentPathname]);
+  if (!currentPathname) return; // Add this null check
+  
+  const pathParts = currentPathname.split('/');
+  if (pathParts.length === 4 && pathParts[1] === 'search' && pathParts[2] === 'round') {
+    setRoundId(pathParts[3]);
+  } else {
+    // ... rest of the code
+  }
+}, [currentPathname]);
 
   useEffect(() => {
     if (roundId) {
