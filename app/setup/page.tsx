@@ -55,7 +55,6 @@ const SetupMenuCard: React.FC<SetupMenuCardProps> = ({ title, description, icon:
 );
 
 export default function SetupPage() {
-  const { hasRole } = useAuth(); // Auth context hook
   const allowedRoles: UserRole[] = ['manager']; // Only managers can access setup
 
   const {
