@@ -236,8 +236,6 @@ const InvoiceManager: React.FC = () => {
     if (!selectedInvoiceForView) return;
     setInvoiceFormError(null);
     setIsLoadingComponent(true);
-    const totalHours = editableInvoiceLines.reduce((sum, l) => sum + Number(l.hours || 0), 0);
-    const totalAmount = editableInvoiceLines.reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
     const updatedInvoiceData: Partial<Invoice> = {
   ...selectedInvoiceForView,
