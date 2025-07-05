@@ -26,14 +26,11 @@ const MissingParcelsWorkflow: React.FC = () => {
     markMissingParcelRecovered,
     couriers,
     addCourier: apiAddCourier,
-    rounds,
-    team,
     clients,
     addClient: apiAddClient,
     deliveryUnits,
     addDeliveryUnit: apiAddDeliveryUnit,
-    subDepots,
-  } = useSharedState();
+    } = useSharedState();
 
   const [currentCourierForWorkflow, setCurrentCourierForWorkflow] = useState<string>('');
   const [showNewCourierFormInWorkflow, setShowNewCourierFormInWorkflow] = useState<boolean>(false);
