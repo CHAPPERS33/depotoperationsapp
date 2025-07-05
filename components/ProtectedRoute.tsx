@@ -13,10 +13,10 @@ interface ProtectedRouteProps {
   fallbackPath?: string;
 }
 
-export default function ProtectedRoute({ 
+function ProtectedRoute({
   children, 
-  allowedRoles = [], 
-  fallbackPath = '/' 
+  allowedRoles = [],
+  fallbackPath: _fallbackPath = '/'
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
