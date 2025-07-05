@@ -20,7 +20,6 @@ import DataManagementCard from '../../components/setup/DataManagementCard';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Users, ListTree, Truck, Package, Building, MapPin, Car, Wrench, Layers, CalendarDays, Clock, Tag, MailPlus } from 'lucide-react';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '../../contexts/AuthContext';
 
 // Define user roles for access control
 type UserRole = 'manager' | 'sorter' | 'cdm' | 'guest' | 'duc'; 
