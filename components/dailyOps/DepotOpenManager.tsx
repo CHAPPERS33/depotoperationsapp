@@ -4,8 +4,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { DepotOpenRecord, SubDepot } from '../../types'; // Removed DepotOpenApiResponseItem as it's no longer used
-import { Save, Plus, Edit, Trash2, CheckCircle2, Loader2 } from 'lucide-react';
+import { Save, Plus, Edit, CheckCircle2, Loader2 } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { TODAY_DATE_STRING } from '../../constants';

@@ -3,14 +3,13 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { AvailabilityRecord, TeamMember, WorkSchedule } from '../../types';
+import { AvailabilityRecord } from '../../types';
 import Button from '../shared/Button';
 import { ChevronLeft, ChevronRight, CalendarDays, User, Edit2, CheckCircle, XCircle, Dot, Trash2 } from 'lucide-react';
 
 const AvailabilityCalendarManager: React.FC = () => {
   const {
     team,
-    availabilityRecords,
     addOrUpdateAvailabilityRecord,
     removeAvailabilityRecord,
     getAvailabilityForMemberDate,
@@ -40,7 +39,6 @@ const AvailabilityCalendarManager: React.FC = () => {
   };
 
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-  const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
   const monthDays = daysInMonth(currentDate.getFullYear(), currentDate.getMonth());
   const startingDayOfWeek = firstDayOfMonth.getDay(); // 0 for Sunday, 1 for Monday, etc.
 
