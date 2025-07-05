@@ -63,7 +63,7 @@ export default function SetupPage() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const viewParam = searchParams.get('view') as SetupView | null;
+  const viewParam = searchParams?.get('view') as SetupView | null;
 
   const currentView: SetupView = viewParam || 'menu';
 
