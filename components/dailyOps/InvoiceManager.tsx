@@ -3,11 +3,10 @@
 
 import React, { useState, useMemo } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { Invoice, InvoiceLine, PayPeriod } from '../../types';
-import { Plus, Trash2, Printer, CheckCircle2, DollarSign, AlertTriangle, FileText } from 'lucide-react';
+import { Invoice, InvoiceLine } from '../../types';
+import { Plus, CheckCircle2 } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
-import { generateInvoicePDFContent, printHtmlContent } from '../../utils/invoicePdfGenerator';
 import { TODAY_DATE_STRING } from '../../constants';
 
 // Utility function
@@ -33,13 +32,11 @@ const InvoiceManager: React.FC = () => {
     workSchedules,
     subDepots,
     saveInvoice: apiSaveInvoice,
-    deleteInvoice: apiDeleteInvoice,
     isLoadingInvoices: isLoadingInvoicesFromHook,
   } = useSharedState();
 
   const [isLoadingComponent, setIsLoadingComponent] = useState(false);
   const [invoiceFormError, setInvoiceFormError] = useState<string | null>(null);
-  const [showInvoiceViewModal, setShowInvoiceViewModal] = useState(false);
   const [selectedInvoiceForView, setSelectedInvoiceForView] = useState<Invoice | null>(null);
   const [editableInvoiceLines, setEditableInvoiceLines] = useState<EditableInvoiceLine[]>([]);
   const [editingInvoiceNotes, setEditingInvoiceNotes] = useState('');
@@ -47,9 +44,6 @@ const InvoiceManager: React.FC = () => {
   const [generateInvoiceTeamMemberId, setGenerateInvoiceTeamMemberId] = useState('');
   const [invoiceSuccessMessage, setInvoiceSuccessMessage] = useState('');
   const [showInvoiceSuccessModal, setShowInvoiceSuccessModal] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [confirmationAction, setConfirmationAction] = useState<(() => void) | null>(null);
-  const [confirmationMessage, setConfirmationMessage] = useState('');
 
   const filteredInvoices = useMemo(() =>
     invoices.sort((a, b) => new Date(b.invoice_date).getTime() - new Date(a.invoice_date).getTime()),
@@ -72,9 +66,11 @@ const InvoiceManager: React.FC = () => {
       (ws.actual_hours || ws.scheduled_hours || 0) > 0
     );
 
-    const newLines: Omit<InvoiceLine, 'id' | 'invoice_id'>[] = relevantSchedules.map(ws => {
+    const newLines: InvoiceLine[] = relevantSchedules.map(ws => {
       const hours = ws.actual_hours ?? ws.scheduled_hours ?? 0;
       return {
+        id: '',
+        invoice_id: '',
         date: ws.date,
         description: `Work performed on ${formatDate(ws.date)} - ${subDepots.find(sd => sd.id === ws.sub_depot_id)?.name || 'Sub ' + ws.sub_depot_id}`,
         hours,
@@ -127,12 +123,16 @@ const InvoiceManager: React.FC = () => {
     const totalHours = editableInvoiceLines.reduce((sum, l) => sum + Number(l.hours || 0), 0);
     const totalAmount = editableInvoiceLines.reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
-    const completeLines = editableInvoiceLines.map(line => ({
-      ...line,
+    const completeLines: InvoiceLine[] = editableInvoiceLines.map(line => ({
+      id: line.id?.toString() || '',
       invoice_id: selectedInvoiceForView.id,
+      date: line.date,
+      description: line.description,
       hours: Number(line.hours) || 0,
       rate: Number(line.rate) || 0,
       amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
+      type: line.type,
+      work_schedule_id: line.work_schedule_id,
     }));
 
     const formData = new FormData();
