@@ -208,19 +208,20 @@ const InvoiceManager: React.FC = () => {
   };
 
   const handleInvoiceLineChange = (index: number, field: keyof InvoiceLine, value: string | number) => {
-    const newLines = [...editableInvoiceLines];
-    const lineToUpdate = { ...newLines[index] } as Partial<InvoiceLine>; // Cast to allow partial update
-    const numValue = typeof value === 'string' ? parseFloat(value) : value;
-
-    if (field === 'hours' || field === 'rate') {
-      (lineToUpdate as any)[field] = isNaN(numValue) ? 0 : numValue;
-    } else {
-      (lineToUpdate as any)[field] = value;
-    }
-    lineToUpdate.amount = parseFloat(((Number(lineToUpdate.hours) || 0) * (Number(lineToUpdate.rate) || 0)).toFixed(2));
-    newLines[index] = lineToUpdate;
-    setEditableInvoiceLines(newLines);
+    lines: editableInvoiceLines.map(line => {
+  const baseLine = {
+    invoice_id: selectedInvoiceForView.id,
+    date: line.date!,
+    description: line.description!,
+    hours: Number(line.hours) || 0,
+    rate: Number(line.rate) || 0,
+    amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
+    type: line.type!,
+    work_schedule_id: line.work_schedule_id
   };
+  // Only include id if it is defined
+  return typeof line.id === 'number' ? { ...baseLine, id: line.id } : baseLine;
+}),
   
   const addInvoiceLine = () => {
     const memberHourlyRate = team.find(tm => tm.id === selectedInvoiceForView?.team_member_id)?.hourly_rate || 12.50;
@@ -242,19 +243,16 @@ const InvoiceManager: React.FC = () => {
       ...selectedInvoiceForView,
       notes: editingInvoiceNotes,
       lines: editableInvoiceLines.map(line => ({
-        id: line.id, // Keep ID if it exists (for existing lines)
-        invoice_id: selectedInvoiceForView.id, // Ensure invoice_id is set
-        date: line.date!,
-        description: line.description!, 
-        hours: Number(line.hours) || 0, 
-        rate: Number(line.rate) || 0, 
-        amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
-        type: line.type!,
-        work_schedule_id: line.work_schedule_id
-    })),
-      total_hours: totalHours,
-      total_amount: totalAmount,
-    };
+  id: line.id, // Keep ID if it exists (for existing lines)
+  invoice_id: selectedInvoiceForView.id, // Ensure invoice_id is set
+  date: line.date!,
+  description: line.description!, 
+  hours: Number(line.hours) || 0, 
+  rate: Number(line.rate) || 0, 
+  amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
+  type: line.type!,
+  work_schedule_id: line.work_schedule_id
+})),
     
     const formData = new FormData();
     Object.entries(updatedInvoiceData).forEach(([key, value]) => {
