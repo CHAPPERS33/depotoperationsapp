@@ -240,19 +240,22 @@ const InvoiceManager: React.FC = () => {
     const totalAmount = editableInvoiceLines.reduce((sum, l) => sum + Number(l.amount || 0), 0);
 
     const updatedInvoiceData: Partial<Invoice> = {
-      ...selectedInvoiceForView,
-      notes: editingInvoiceNotes,
-      lines: editableInvoiceLines.map(line => ({
-  id: line.id, // Keep ID if it exists (for existing lines)
-  invoice_id: selectedInvoiceForView.id, // Ensure invoice_id is set
-  date: line.date!,
-  description: line.description!, 
-  hours: Number(line.hours) || 0, 
-  rate: Number(line.rate) || 0, 
-  amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
-  type: line.type!,
-  work_schedule_id: line.work_schedule_id
-})),
+  ...selectedInvoiceForView,
+  notes: editingInvoiceNotes,
+  lines: editableInvoiceLines.map(line => {
+    const baseLine = {
+      invoice_id: selectedInvoiceForView.id,
+      date: line.date!,
+      description: line.description!,
+      hours: Number(line.hours) || 0,
+      rate: Number(line.rate) || 0,
+      amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
+      type: line.type!,
+      work_schedule_id: line.work_schedule_id
+    };
+    return typeof line.id === 'number' ? { ...baseLine, id: line.id } : baseLine;
+  }),
+};
     
     const formData = new FormData();
     Object.entries(updatedInvoiceData).forEach(([key, value]) => {
