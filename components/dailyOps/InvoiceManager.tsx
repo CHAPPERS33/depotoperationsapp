@@ -1,10 +1,10 @@
 // components/dailyOps/InvoiceManager.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { Invoice, InvoiceLine, PayPeriod, TeamMember } from '../../types';
-import { Plus, Save, Trash2, Edit, Printer, CheckCircle2, DollarSign, AlertTriangle, FileText } from 'lucide-react';
+import { Invoice, InvoiceLine, PayPeriod } from '../../types';
+import { Plus, Trash2, Printer, CheckCircle2, DollarSign, AlertTriangle, FileText } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { generateInvoicePDFContent, printHtmlContent } from '../../utils/invoicePdfGenerator';

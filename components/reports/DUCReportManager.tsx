@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { DUCFinalReport, FailedRound, SegregatedParcel, Round, Client, SubDepot, ParcelScanEntry, RoundEntry } from '../../types';
+import { DUCFinalReport, FailedRound, SegregatedParcel } from '../../types';
 import { useSharedState } from '../../hooks/useSharedState';
 import { getTodaysMissingParcelsSummaryForReport } from '../../utils/reportUtils';
 import { generateDUCFinalReportEmail } from '../../utils/emailGenerators';

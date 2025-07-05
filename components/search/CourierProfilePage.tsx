@@ -6,10 +6,8 @@ import { usePathname, useRouter } from 'next/navigation'; // Use Next.js routing
 import { useSharedState } from '../../../hooks/useSharedState';
 import { getCourierProfileDetails } from '../../../utils/searchUtils';
 import { CourierProfileData, ParcelScanEntry } from '../../../types'; 
-import { User as UserIcon, Package, TrendingUp, AlertTriangle, Plus, CheckCircle2, Clock, Phone, ExternalLink } from 'lucide-react';
+import { User as UserIcon, AlertTriangle, Plus, CheckCircle2, Clock, Phone, ExternalLink } from 'lucide-react';
 import Button from '../../../components/shared/Button';
-import AppLink from '../../../components/shared/AppLink'; // For internal navigation
-import { TODAY_DATE_STRING_GB } from '../../../constants';
 
 export default function CourierProfileDisplayPage() {
   const currentPathname = usePathname(); // Use Next.js pathname

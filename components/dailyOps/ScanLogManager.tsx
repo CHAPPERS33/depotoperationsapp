@@ -3,8 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { ScanLog } from '../../types';
-import { Save, Trash2, Plus } from 'lucide-react';
+import { Save, Trash2 } from 'lucide-react';
 import Button from '../shared/Button';
 import { TODAY_DATE_STRING } from '../../constants';
 

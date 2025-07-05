@@ -1,9 +1,9 @@
 
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { ClientMissingLeagueReport, PeriodSelection, Client, RoundEntry } from '../../types';
+import { ClientMissingLeagueReport, PeriodSelection } from '../../types';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { ListChecks, CalendarDays, FileText, Eye, Send } from 'lucide-react';

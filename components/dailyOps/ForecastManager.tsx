@@ -4,8 +4,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { Forecast, ForecastVolume, PayPeriod, SubDepot } from '../../types';
-import { Plus, Save, Trash2, Edit, Share2, RotateCcw } from 'lucide-react';
+import { Forecast, ForecastVolume, SubDepot } from '../../types';
+import { Plus, Trash2, Edit, RotateCcw } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal'; 
 import { generateForecastWhatsAppMessage, WhatsAppShareButton } from '../../utils/whatsappUtils';

@@ -2,12 +2,12 @@
 // components/reports/LostPreventionReportManager.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { LostPreventionReport, Courier, Round } from '../../types';
+import { LostPreventionReport } from '../../types';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
-import { Plus, Save, Trash2, Edit, Eye, AlertTriangle, Camera, Search, Send } from 'lucide-react';
+import { Save, Trash2, Edit, Eye, AlertTriangle, Send } from 'lucide-react';
 import { TODAY_DATE_STRING } from '../../constants';
 import { generateLostPreventionReportEmail } from '../../utils/emailGenerators'; 
 

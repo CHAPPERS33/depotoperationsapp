@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
 import { WaveEntry, Vehicle, VehicleType } from '../../types';
-import { Save, Trash2, Plus, AlertTriangle } from 'lucide-react';
+import { Save, Trash2, AlertTriangle } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { TODAY_DATE_STRING } from '../../constants';

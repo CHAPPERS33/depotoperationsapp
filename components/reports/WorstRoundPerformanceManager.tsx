@@ -1,9 +1,9 @@
 
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { WorstRoundPerformanceReport, PeriodSelection, Round, RoundEntry, SubDepot } from '../../types';
+import { WorstRoundPerformanceReport, PeriodSelection } from '../../types';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { CornerUpLeft, CalendarDays, FileText, Eye, Send } from 'lucide-react';

@@ -2,10 +2,10 @@
 // components/dailyOps/WorkScheduleManager.tsx
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { WorkSchedule, TeamMember, SubDepot, Forecast, AvailabilityRecord, ScanActivity } from '../../types';
-import { Plus, Save, Trash2, Edit, RotateCcw, ScanLine, Check, AlertTriangle } from 'lucide-react';
+import { WorkSchedule } from '../../types';
+import { Plus, Trash2, Edit, ScanLine, Check, AlertTriangle } from 'lucide-react';
 import Button from '../shared/Button';
 import Modal from '../shared/Modal';
 import { generateTeamScheduleWhatsAppMessage, WhatsAppShareButton } from '../../utils/whatsappUtils';

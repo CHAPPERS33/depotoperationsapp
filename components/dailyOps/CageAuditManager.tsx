@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSharedState } from '../../hooks/useSharedState';
-import { CageAuditEntry, MissortedParcelDetail, Client, Round } from '../../types';
+import { CageAuditEntry, MissortedParcelDetail, Client } from '../../types';
 import Button from '../shared/Button';
 import { Plus, Save, Trash2, UploadCloud, XCircle, Image as ImageIcon, CheckCircle, AlertTriangle } from 'lucide-react';
 import { TODAY_DATE_STRING } from '../../constants';

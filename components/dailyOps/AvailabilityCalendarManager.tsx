@@ -55,9 +55,9 @@ const AvailabilityCalendarManager: React.FC = () => {
   };
 
   const getAvailabilityNotes = (date: string): string | undefined => {
-    if (!selectedTeamMemberId) return undefined;
-    return getAvailabilityForMemberDate(selectedTeamMemberId, date)?.notes;
-  };
+  if (!selectedTeamMemberId) return undefined;
+  return getAvailabilityForMemberDate(selectedTeamMemberId, date)?.notes || undefined;
+};
 
   const isScheduled = (dateStr: string): boolean => {
     if (!selectedTeamMemberId) return false;
