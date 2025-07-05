@@ -56,22 +56,23 @@ const InvoiceManager: React.FC = () => {
     );
 
     const newLines: InvoiceLine[] = relevantSchedules.map((ws) => {
-      const hours = ws.actual_hours ?? ws.scheduled_hours ?? 0;
-      return {
-        id: '',
-        invoice_id: '',
-        date: ws.date,
-        description: `Work performed on ${formatDate(ws.date)} - ${
-          subDepots.find((sd) => sd.id === ws.sub_depot_id)?.name ||
-          'Sub ' + ws.sub_depot_id
-        }`,
-        hours,
-        rate: memberHourlyRate,
-        amount: parseFloat((hours * memberHourlyRate).toFixed(2)),
-        type: 'Regular',
-        work_schedule_id: ws.id,
-      };
-    });
+  const hours = ws.actual_hours ?? ws.scheduled_hours ?? 0;
+  return {
+    id: 0, // ✅ use 0 or undefined if optional
+    invoice_id: 0, // ✅ use 0 or undefined if optional
+    date: ws.date,
+    description: `Work performed on ${formatDate(ws.date)} - ${
+      subDepots.find((sd) => sd.id === ws.sub_depot_id)?.name ||
+      'Sub ' + ws.sub_depot_id
+    }`,
+    hours,
+    rate: memberHourlyRate,
+    amount: parseFloat((hours * memberHourlyRate).toFixed(2)),
+    type: 'Regular',
+    work_schedule_id: ws.id,
+  };
+});
+
 
     const totalHours = newLines.reduce((sum, line) => sum + line.hours, 0);
     const totalAmount = newLines.reduce((sum, line) => sum + line.amount, 0);
