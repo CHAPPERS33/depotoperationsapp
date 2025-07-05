@@ -13,16 +13,16 @@ import { TODAY_DATE_STRING } from '../../constants';
 const formatDate = (dateStr: string) => new Date(dateStr + 'T00:00:00Z').toLocaleDateString('en-GB');
 
 // Editable invoice line type
-type EditableInvoiceLine = {
-  id?: string | number;
-  date: string;
-  description: string;
-  hours: number;
-  rate: number;
-  amount: number;
-  type: InvoiceLine['type'];
-  work_schedule_id?: string;
-};
+// type EditableInvoiceLine = {
+//   id?: string | number;
+//   date: string;
+//   description: string;
+//   hours: number;
+//   rate: number;
+//   amount: number;
+//   type: InvoiceLine['type'];
+//   work_schedule_id?: string;
+// };
 
 const InvoiceManager: React.FC = () => {
   const {
