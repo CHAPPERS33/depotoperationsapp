@@ -208,20 +208,20 @@ const InvoiceManager: React.FC = () => {
   };
 
   const handleInvoiceLineChange = (index: number, field: keyof InvoiceLine, value: string | number) => {
-    lines: editableInvoiceLines.map(line => {
-  const baseLine = {
-    invoice_id: selectedInvoiceForView.id,
-    date: line.date!,
-    description: line.description!,
-    hours: Number(line.hours) || 0,
-    rate: Number(line.rate) || 0,
-    amount: parseFloat(((Number(line.hours) || 0) * (Number(line.rate) || 0)).toFixed(2)),
-    type: line.type!,
-    work_schedule_id: line.work_schedule_id
-  };
-  // Only include id if it is defined
-  return typeof line.id === 'number' ? { ...baseLine, id: line.id } : baseLine;
-}),
+  setEditableInvoiceLines(prev =>
+    prev.map((line, i) => {
+      if (i !== index) return line;
+      const updatedLine = { ...line, [field]: value };
+      // Recalculate amount if hours or rate changed
+      if (field === 'hours' || field === 'rate') {
+        const hours = field === 'hours' ? Number(value) : Number(updatedLine.hours) || 0;
+        const rate = field === 'rate' ? Number(value) : Number(updatedLine.rate) || 0;
+        updatedLine.amount = parseFloat((hours * rate).toFixed(2));
+      }
+      return updatedLine;
+    })
+  );
+};
   
   const addInvoiceLine = () => {
     const memberHourlyRate = team.find(tm => tm.id === selectedInvoiceForView?.team_member_id)?.hourly_rate || 12.50;
